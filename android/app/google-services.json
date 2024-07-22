@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "110240005050",
+    "firebase_url": "https://agrow-177c4-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "agrow-177c4",
+    "storage_bucket": "agrow-177c4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:110240005050:android:fec9f31f05a05e333c3b83",
+        "android_client_info": {
+          "package_name": "com.example.agricplant.agriplant"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCLdC3m4kAVfHYoXnWwWirhTesuGtoHRkg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
