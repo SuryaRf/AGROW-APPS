@@ -1,12 +1,11 @@
 import 'dart:ui';
 
-import 'package:agriplant/data/TrackingCard.dart';
-import 'package:agriplant/data/services.dart';
-import 'package:agriplant/pages/add_plant.dart';
-import 'package:agriplant/pages/detail_plant.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
+import 'package:agriplant/pages/add_plant.dart';
+import 'package:agriplant/pages/detail_plant.dart';
+import 'package:agriplant/data/TrackingCard.dart';
 
 class ServicesPage extends StatelessWidget {
   const ServicesPage({super.key});
@@ -25,8 +24,8 @@ class ServicesPage extends StatelessWidget {
         ),
         backgroundColor: Colors.green,
         onPressed: () {
-          Navigator.push(context,
-              MaterialPageRoute(builder: (context) =>  AddPlant()));
+          Navigator.push(
+              context, MaterialPageRoute(builder: (context) => AddPlant()));
         },
       ),
       body: Column(
@@ -43,23 +42,27 @@ class ServicesPage extends StatelessWidget {
                     ),
                   );
                 }
-            
+
                 if (snapshot.hasData) {
-                  return Container(
-                    padding: EdgeInsets.only(top: 30),
-                    height: 1000,
+                  return Padding(
+                    padding: const EdgeInsets.all(10.0),
                     child: GridView(
-                      padding: const EdgeInsets.all(16),
                       gridDelegate:
                           const SliverGridDelegateWithFixedCrossAxisCount(
                         crossAxisCount: 1,
                         childAspectRatio: 2,
-                        crossAxisSpacing: 14,
-                        mainAxisSpacing: 14,
+                        crossAxisSpacing: 1,
+                        mainAxisSpacing: 1,
                       ),
-                      children: snapshot.data!.docs.map((note) => trackingCard((){
-                        Navigator.push(context, MaterialPageRoute(builder: (context) =>  DetailPlant(note)));
-                      }, note)).toList(),
+                      children: snapshot.data!.docs
+                          .map((note) => trackingCard(() {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            DetailPlant(note)));
+                              }, note))
+                          .toList(),
                     ),
                   );
                 }
@@ -67,55 +70,6 @@ class ServicesPage extends StatelessWidget {
               },
             ),
           ),
-          // Container(
-          //   padding: EdgeInsets.only(top: 30),
-          //   height: 1000,
-          //   child: GridView.builder(
-          //     itemCount: services.length,
-          //     padding: const EdgeInsets.all(16),
-          //     gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-          //       crossAxisCount: 1,
-          //       childAspectRatio: 2,
-          //       crossAxisSpacing: 14,
-          //       mainAxisSpacing: 14,
-          //     ),
-          //     itemBuilder: (context, index) {
-          //       return Container(
-          //         alignment: Alignment.bottomCenter,
-          //         padding: const EdgeInsets.all(10),
-          //         decoration: BoxDecoration(
-          //           borderRadius: BorderRadius.circular(10),
-          //           image: DecorationImage(
-          //             image: AssetImage(services[index].image),
-          //             fit: BoxFit.cover,
-          //           ),
-          //         ),
-          //         child: ClipRRect(
-          //           borderRadius: BorderRadius.circular(5),
-          //           child: BackdropFilter(
-          //             filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
-          //             child: Container(
-          //               padding: const EdgeInsets.symmetric(
-          //                   vertical: 5, horizontal: 10),
-          //               decoration: BoxDecoration(
-          //                 color: Colors.white.withOpacity(0.2),
-          //                 borderRadius:
-          //                     const BorderRadius.all(Radius.circular(5)),
-          //               ),
-          //               child: Text(
-          //                 services[index].name,
-          //                 style: const TextStyle(
-          //                   color: Colors.white,
-          //                   fontSize: 16,
-          //                 ),
-          //               ),
-          //             ),
-          //           ),
-          //         ),
-          //       );
-          //     },
-          //   ),
-          // ),
         ],
       ),
     );

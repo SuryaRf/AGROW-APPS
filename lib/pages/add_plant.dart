@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
+import 'package:intl/intl.dart'; // Import paket intl
 
 class AddPlant extends StatefulWidget {
   @override
@@ -8,20 +9,30 @@ class AddPlant extends StatefulWidget {
 }
 
 class _AddPlantState extends State<AddPlant> {
-  TextEditingController _plantController = TextEditingController();
-  TextEditingController _mainController = TextEditingController();
+  final TextEditingController _plantController = TextEditingController();
+  final TextEditingController _mainController = TextEditingController();
+
+  // Format tanggal yang diinginkan
+  String getFormattedDate() {
+    DateTime now = DateTime.now();
+    DateFormat formatter = DateFormat('yyyy-MM-dd HH:mm');
+    return formatter.format(now);
+  }
+
   @override
   Widget build(BuildContext context) {
-    // String img = widget.doc["img"];
+    // Format tanggal saat ini
+    String date = getFormattedDate();
+
     return Scaffold(
       floatingActionButton: FloatingActionButton(
-          child: Icon(IconlyLight.discovery),
+          child: const Icon(IconlyLight.discovery),
           onPressed: () async {
             FirebaseFirestore.instance.collection("plants").add({
               "name": _plantController.text,
               "img": "assets/services/${_mainController.text}.jpg",
+              "creation_date": date,
             }).then((value) {
-              print(value.id);
               Navigator.pop(context);
             }).catchError((error) => print("failed to add data"));
           }),
@@ -35,7 +46,7 @@ class _AddPlantState extends State<AddPlant> {
       body: SafeArea(
           child: Column(
         children: [
-          Text("halo dek"),
+          Text(date),
           TextField(
             controller: _plantController,
             decoration: InputDecoration(
