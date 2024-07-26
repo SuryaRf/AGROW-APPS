@@ -1,3 +1,4 @@
+import 'package:agriplant/pages/services_page.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -44,13 +45,22 @@ Widget trackingCard(Function()? onTap, QueryDocumentSnapshot doc) {
                             fontWeight: FontWeight.normal,
                           ),
                         ),
-                        const SizedBox(height: 5), // Add some spacing between the texts
+                        const SizedBox(
+                            height: 5), // Add some spacing between the texts
                         Text(
                           "Tanggal Pembuatan: ${doc["creation_date"]}",
                           style: GoogleFonts.poppins().copyWith(
                             fontSize: 12,
                             fontWeight: FontWeight.normal,
                           ),
+                        ),
+
+                        // Add delete button
+                        IconButton(
+                          icon: Icon(Icons.delete, color: Colors.red),
+                          onPressed: () {
+                            ServicesPage().deletePlant(doc.id);
+                          },
                         ),
                       ],
                     ),

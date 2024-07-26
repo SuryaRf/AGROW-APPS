@@ -66,7 +66,7 @@ class ServicesPage extends StatelessWidget {
                     ),
                   );
                 }
-                return Text("there is no Data");
+                return Text("There is no Data");
               },
             ),
           ),
@@ -74,4 +74,19 @@ class ServicesPage extends StatelessWidget {
       ),
     );
   }
+
+  // Fungsi untuk menghapus dokumen dari Firestore
+  void deletePlant(String id) {
+    FirebaseFirestore.instance
+        .collection("plants")
+        .doc(id)
+        .delete()
+        .then((_) {
+      print("Document successfully deleted!");
+    }).catchError((error) {
+      print("Error removing document: $error");
+    });
+  }
 }
+
+

@@ -11,6 +11,7 @@ class AddPlant extends StatefulWidget {
 class _AddPlantState extends State<AddPlant> {
   final TextEditingController _plantController = TextEditingController();
   final TextEditingController _mainController = TextEditingController();
+  final TextEditingController _noteController = TextEditingController();
 
   // Format tanggal yang diinginkan
   String getFormattedDate() {
@@ -32,6 +33,7 @@ class _AddPlantState extends State<AddPlant> {
               "name": _plantController.text,
               "img": "assets/services/${_mainController.text}.jpg",
               "creation_date": date,
+              "note": _noteController.text
             }).then((value) {
               Navigator.pop(context);
             }).catchError((error) => print("failed to add data"));
@@ -64,7 +66,17 @@ class _AddPlantState extends State<AddPlant> {
               hintText: "Jenis",
             ),
           ),
-          // Image.asset("assets/services/${_plantController.text}.jpg")
+          const SizedBox(
+            height: 20,
+          ),
+          TextField(
+            controller: _noteController,
+            decoration: InputDecoration(
+              border: InputBorder.none,
+              hintText: "Catatan",
+            ),
+          ),
+          
         ],
       )),
     );
