@@ -3,9 +3,12 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import 'plant_monitoring.dart';
+
 class DetailPlant extends StatefulWidget {
   DetailPlant(this.doc, {Key? key}) : super(key: key);
   final QueryDocumentSnapshot doc;
+  
 
   @override
   State<DetailPlant> createState() => _DetailPlantState();
@@ -102,45 +105,55 @@ class _DetailPlantState extends State<DetailPlant> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Container(
-                  margin: const EdgeInsets.only(left: 10, right: 10),
-                  height: 220,
-                  width: w * 0.4,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(15),
-                      color: Color.fromARGB(255, 243, 243, 243),
-                      boxShadow: [
-                        BoxShadow(
-                            color: Colors.green.withOpacity(0.5),
-                            blurRadius: 3,
-                            spreadRadius: 1,
-                            offset: Offset(1, 2))
-                      ]),
-                  child: Column(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Image.asset(
-                          "assets/growth.png",
-                          height: 90,
-                          width: 90,
-                        ),
+                InkWell(
+                  onTap: () {
+                     Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => PlantMonitoringPage(plantDoc: widget.doc),
                       ),
-                      const SizedBox(
-                        height: 10,
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Text(
-                          "Tracking \nPertumbuhan Tanaman",
-                          textAlign: TextAlign.center,
-                          style: GoogleFonts.poppins().copyWith(
-                            fontSize: 14,
-                            fontWeight: FontWeight.w700,
+                    );
+                  },
+                  child: Container(
+                    margin: const EdgeInsets.only(left: 10, right: 10),
+                    height: 220,
+                    width: w * 0.4,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(15),
+                        color: Color.fromARGB(255, 243, 243, 243),
+                        boxShadow: [
+                          BoxShadow(
+                              color: Colors.green.withOpacity(0.5),
+                              blurRadius: 3,
+                              spreadRadius: 1,
+                              offset: Offset(1, 2))
+                        ]),
+                    child: Column(
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Image.asset(
+                            "assets/growth.png",
+                            height: 90,
+                            width: 90,
                           ),
                         ),
-                      ),
-                    ],
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text(
+                            "Tracking \nPertumbuhan Tanaman",
+                            textAlign: TextAlign.center,
+                            style: GoogleFonts.poppins().copyWith(
+                              fontSize: 14,
+                              fontWeight: FontWeight.w700,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
                 InkWell(

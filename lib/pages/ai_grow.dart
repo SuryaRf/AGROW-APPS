@@ -106,29 +106,5 @@ class _AiGrowState extends State<AiGrow> {
   }
 
 //   
-// void _sendMediaMessage() async {
-//     try {
-//       // Request permissions
-//       if (await Permission.photos.request().isGranted) {
-//         ImagePicker picker = ImagePicker();
-//         XFile? file = await picker.pickImage(source: ImageSource.gallery);
-//         if (file != null) {
-//           ChatMessage chatMessage = ChatMessage(
-//             user: currentUser,
-//             createdAt: DateTime.now(),
-//             text: "Describe this picture",
-//             medias: [
-//               ChatMedia(url: file.path, fileName: "", type: MediaType.image)
-//             ],
-//           );
-//           _sendMessage(chatMessage);
-//         }
-//       } else {
-//         // Handle the case when the permission is not granted
-//         print('Permission not granted');
-//       }
-//     } catch (e) {
-//       print('Error: $e');
-//     }
-//   }
+
 }
