@@ -2,8 +2,16 @@ import 'package:agriplant/pages/services_page.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:intl/intl.dart';
 
 Widget trackingCard(Function()? onTap, QueryDocumentSnapshot doc) {
+  // Convert Timestamp to DateTime
+  Timestamp timestamp = doc["creation_date"] as Timestamp;
+  DateTime creationDate = timestamp.toDate();
+  
+  // Format DateTime
+  String formattedDate = DateFormat('dd MMM yyyy, HH:mm').format(creationDate);
+
   return Column(
     crossAxisAlignment: CrossAxisAlignment.start,
     children: [
@@ -45,22 +53,23 @@ Widget trackingCard(Function()? onTap, QueryDocumentSnapshot doc) {
                             fontWeight: FontWeight.normal,
                           ),
                         ),
-                        const SizedBox(
-                            height: 5), // Add some spacing between the texts
+                        const SizedBox(height: 5),
                         Text(
-                          "Tanggal Pembuatan: ${doc["creation_date"]}",
+                          "Tanggal Pembuatan: $formattedDate",
                           style: GoogleFonts.poppins().copyWith(
                             fontSize: 12,
                             fontWeight: FontWeight.normal,
                           ),
                         ),
-
-                        // Add delete button
-                        IconButton(
-                          icon: Icon(Icons.delete, color: Colors.red),
-                          onPressed: () {
-                            ServicesPage().deletePlant(doc.id);
-                          },
+                        const SizedBox(height: 10),
+                        Padding(
+                          padding: const EdgeInsets.only(top: 10),
+                          child: IconButton(
+                            icon: Icon(Icons.delete, color: Colors.red),
+                            onPressed: () {
+                              ServicesPage().deletePlant(doc.id);
+                            },
+                          ),
                         ),
                       ],
                     ),

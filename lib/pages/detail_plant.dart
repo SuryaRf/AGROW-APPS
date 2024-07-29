@@ -2,13 +2,13 @@ import 'package:agriplant/pages/ai_grow.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:intl/intl.dart'; // Import intl
 
 import 'plant_monitoring.dart';
 
 class DetailPlant extends StatefulWidget {
   DetailPlant(this.doc, {Key? key}) : super(key: key);
   final QueryDocumentSnapshot doc;
-  
 
   @override
   State<DetailPlant> createState() => _DetailPlantState();
@@ -18,6 +18,15 @@ class _DetailPlantState extends State<DetailPlant> {
   @override
   Widget build(BuildContext context) {
     final w = MediaQuery.of(context).size.width;
+
+    // Convert Timestamp to DateTime
+    Timestamp timestamp = widget.doc["creation_date"] as Timestamp;
+    DateTime creationDate = timestamp.toDate();
+
+    // Format DateTime
+    String formattedDate =
+        DateFormat('dd MMM yyyy, HH:mm').format(creationDate);
+
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
@@ -72,7 +81,7 @@ class _DetailPlantState extends State<DetailPlant> {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10),
               child: Text(
-                "Tanggal Pembuatan: ${widget.doc["creation_date"]}",
+                "Tanggal Pembuatan: $formattedDate", // Use formatted date
                 style: GoogleFonts.poppins().copyWith(
                   fontSize: 14,
                   fontWeight: FontWeight.normal,
@@ -107,10 +116,11 @@ class _DetailPlantState extends State<DetailPlant> {
               children: [
                 InkWell(
                   onTap: () {
-                     Navigator.push(
+                    Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => PlantMonitoringPage(plantDoc: widget.doc),
+                        builder: (context) =>
+                            PlantMonitoringPage(plantDoc: widget.doc),
                       ),
                     );
                   },
@@ -158,7 +168,10 @@ class _DetailPlantState extends State<DetailPlant> {
                 ),
                 InkWell(
                   onTap: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => const AiGrow()));
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const AiGrow()));
                   },
                   child: Container(
                     margin: const EdgeInsets.only(left: 10, right: 10),

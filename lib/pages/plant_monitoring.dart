@@ -197,10 +197,10 @@ class _PlantMonitoringPageState extends State<PlantMonitoringPage> {
                               },
                             ),
                           ),
-                          leftTitles: AxisTitles(
+                          leftTitles: const AxisTitles(
                             sideTitles: SideTitles(showTitles: false),
                           ),
-                          topTitles: AxisTitles(
+                          topTitles: const AxisTitles(
                             sideTitles: SideTitles(showTitles: false),
                           ),
                         ),

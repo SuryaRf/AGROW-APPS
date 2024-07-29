@@ -4,6 +4,7 @@ import 'package:badges/badges.dart' as badges;
 import 'package:agriplant/data/products.dart';
 import 'package:agriplant/widgets/product_card.dart';
 import 'package:agriplant/pages/home_page.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class ExplorePage extends StatefulWidget {
   const ExplorePage({super.key});
@@ -18,20 +19,26 @@ class _ExplorePageState extends State<ExplorePage> {
     return Scaffold(
       appBar:  AppBar(
         centerTitle: false,
-        title: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              "Hi AFriends 👋🏾",
-              style: Theme.of(context).textTheme.titleMedium,
-            ),
-            Text("Enjoy our services",
-                style: Theme.of(context).textTheme.bodySmall)
-          ],
+        title: Padding(
+          padding: const EdgeInsets.only(top: 15),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                "Hello AFriends 👋🏾",
+                style: GoogleFonts.poppins().copyWith(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 20
+                ),
+              ),
+              Text("Enjoy our services",
+                  style: Theme.of(context).textTheme.bodySmall)
+            ],
+          ),
         ),
         actions: [
           Padding(
-            padding: const EdgeInsets.only(right: 8.0),
+            padding: const EdgeInsets.only(right: 8.0, top: 15),
             child: IconButton.filledTonal(
               onPressed: () {},
               icon: badges.Badge(

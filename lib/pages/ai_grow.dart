@@ -21,8 +21,8 @@ class _AiGrowState extends State<AiGrow> {
   ChatUser currentUser = ChatUser(id: "0", firstName: "User");
   ChatUser geminiUser = ChatUser(
       id: "1",
-      firstName: "Gemini",
-      profileImage: "https://images.app.goo.gl/17yvPsWNqXdUXVpr7");
+      firstName: "Agrow AI",
+      profileImage: "assets/bot.png",);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
