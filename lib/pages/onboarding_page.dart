@@ -20,7 +20,7 @@ class OnboardingPage extends StatelessWidget {
                 child: Image.asset('assets/onboard.png'),
               ),
               const Spacer(),
-              Text('Welcome to Agrow',
+              Text('Agrow Application',
                   style: Theme.of(context).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.bold)),
               const Padding(
                 padding: EdgeInsets.only(top: 30, bottom: 30),

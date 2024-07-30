@@ -110,11 +110,11 @@ class _HomePageState extends State<HomePage> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Icon(
-                      IconlyLight.buy,
+                      IconlyLight.notification,
                       color: currentPageIndex == 2 ? Colors.green : Colors.grey,
                     ),
                     Text(
-                      "Cart",
+                      "Notification",
                       style: TextStyle(
                         color: currentPageIndex == 2 ? Colors.green : Colors.grey,
                       ),

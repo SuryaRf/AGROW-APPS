@@ -18,6 +18,7 @@ class _ExplorePageState extends State<ExplorePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar:  AppBar(
+        automaticallyImplyLeading: false,
         centerTitle: false,
         title: Padding(
           padding: const EdgeInsets.only(top: 15),
@@ -62,41 +63,41 @@ class _ExplorePageState extends State<ExplorePage> {
       body: ListView(
         padding: const EdgeInsets.all(16.0),
         children: [
-          Padding(
-            padding: const EdgeInsets.only(bottom: 15),
-            child: Row(
-              children: [
-                Expanded(
-                  child: TextField(
-                    decoration: InputDecoration(
-                      hintText: "Search here...",
-                      isDense: true,
-                      contentPadding: const EdgeInsets.all(12.0),
-                      border: const OutlineInputBorder(
-                        borderSide: BorderSide(),
-                        borderRadius: BorderRadius.all(
-                          Radius.circular(99),
-                        ),
-                      ),
-                      enabledBorder: OutlineInputBorder(
-                        borderSide: BorderSide(
-                          color: Colors.grey.shade300,
-                        ),
-                        borderRadius: const BorderRadius.all(
-                          Radius.circular(99),
-                        ),
-                      ),
-                      prefixIcon: const Icon(IconlyLight.search),
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 12),
-                  child: IconButton.filled(onPressed: () {}, icon: const Icon(IconlyLight.filter)),
-                ),
-              ],
-            ),
-          ),
+          // Padding(
+          //   padding: const EdgeInsets.only(bottom: 15),
+          //   child: Row(
+          //     children: [
+          //       Expanded(
+          //         child: TextField(
+          //           decoration: InputDecoration(
+          //             hintText: "Search here...",
+          //             isDense: true,
+          //             contentPadding: const EdgeInsets.all(12.0),
+          //             border: const OutlineInputBorder(
+          //               borderSide: BorderSide(),
+          //               borderRadius: BorderRadius.all(
+          //                 Radius.circular(99),
+          //               ),
+          //             ),
+          //             enabledBorder: OutlineInputBorder(
+          //               borderSide: BorderSide(
+          //                 color: Colors.grey.shade300,
+          //               ),
+          //               borderRadius: const BorderRadius.all(
+          //                 Radius.circular(99),
+          //               ),
+          //             ),
+          //             prefixIcon: const Icon(IconlyLight.search),
+          //           ),
+          //         ),
+          //       ),
+          //       Padding(
+          //         padding: const EdgeInsets.only(left: 12),
+          //         child: IconButton.filled(onPressed: () {}, icon: const Icon(IconlyLight.filter)),
+          //       ),
+          //     ],
+          //   ),
+          // ),
           Padding(
             padding: const EdgeInsets.only(bottom: 25),
             child: SizedBox(
@@ -148,13 +149,19 @@ class _ExplorePageState extends State<ExplorePage> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(
-                "Featured Products",
-                style: Theme.of(context).textTheme.titleMedium,
+              Padding(
+                padding: const EdgeInsets.only(left: 5),
+                child: Text(
+                  "Produk Kami",
+                  style: GoogleFonts.poppins().copyWith(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w600,
+                          ),
+                ),
               ),
               TextButton(
                 onPressed: () {},
-                child: const Text("See all"),
+                child: const Text("Lihat Semua"),
               ),
             ],
           ),
