@@ -45,7 +45,7 @@ class _ActivatedPageState extends State<ActivatedPage> {
                   style: GoogleFonts.poppins().copyWith(
                             fontSize: 22,
                             fontWeight: FontWeight.bold,
-                            color: Colors.green,
+                            color: Color(0xFF4CAF50),
                           ),
                 ),
                 const SizedBox(height: 20), // Add spacing between elements
