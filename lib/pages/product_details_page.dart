@@ -71,7 +71,7 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                "Available in stock",
+                "Stok tersedia",
                 style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                       color: Theme.of(context).colorScheme.primary,
                     ),

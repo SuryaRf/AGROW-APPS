@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart'; // Import paket intl
 
 class AddPlant extends StatefulWidget {
@@ -50,10 +51,11 @@ class _AddPlantState extends State<AddPlant> {
 
     return Scaffold(
       floatingActionButton: FloatingActionButton(
-        child: const Icon(IconlyLight.discovery),
+        child: const Icon(IconlyLight.plus),
         onPressed: () async {
           // Add new plant
-          DocumentReference docRef = await FirebaseFirestore.instance.collection("plants").add({
+          DocumentReference docRef =
+              await FirebaseFirestore.instance.collection("plants").add({
             "name": _plantController.text,
             "img": "assets/services/${_selectedType}.jpg",
             "creation_date": date,
@@ -76,6 +78,12 @@ class _AddPlantState extends State<AddPlant> {
           },
           icon: const Icon(Icons.arrow_back),
         ),
+        title: Text(
+          "Tambahkan Tanaman",
+          style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                color: Colors.black,
+              ),
+        ),
       ),
       body: SafeArea(
         child: Padding(
@@ -83,9 +91,27 @@ class _AddPlantState extends State<AddPlant> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                DateFormat('yyyy-MM-dd HH:mm').format(date.toDate()), // Display formatted date
-                style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+              Center(
+                child: Text(
+                  "Tambahkan Tanaman Anda",
+                  style: GoogleFonts.poppins(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.green),
+                ),
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              Center(
+                child: Text(
+                  DateFormat('yyyy-MM-dd HH:mm')
+                      .format(date.toDate()), // Display formatted date
+                  style: TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
               ),
               const SizedBox(height: 16),
               TextField(

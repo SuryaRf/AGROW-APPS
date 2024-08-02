@@ -61,13 +61,13 @@ class OrderProduct extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      "\$${product.price}",
+                      "Rp.${product.price}k",
                       style: Theme.of(context).textTheme.titleMedium?.copyWith(
                             color: Theme.of(context).colorScheme.primary,
                             fontWeight: FontWeight.bold,
                           ),
                     ),
-                    Text("Qty: ${Random().nextInt(4) + 1}")
+                    Text("Jumlah: ${Random().nextInt(4) + 1}")
                   ],
                 )
               ],

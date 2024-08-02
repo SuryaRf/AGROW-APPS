@@ -203,7 +203,7 @@ class _DetailPlantState extends State<DetailPlant> {
                         Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: Text(
-                            "Chat \n Dengan AIgrow",
+                            "Chat \n Dengan AI grow",
                             textAlign: TextAlign.center,
                             style: GoogleFonts.poppins().copyWith(
                               fontSize: 14,

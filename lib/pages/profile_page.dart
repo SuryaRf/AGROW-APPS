@@ -1,5 +1,6 @@
 import 'package:agriplant/pages/orders_page.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
 
 class ProfilePage extends StatelessWidget {
@@ -17,14 +18,13 @@ class ProfilePage extends StatelessWidget {
               backgroundColor: Theme.of(context).colorScheme.primary,
               child: const CircleAvatar(
                 radius: 60,
-                foregroundImage: NetworkImage(
-                    'https://images.unsplash.com/photo-1464863979621-258859e62245?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=3386&q=80'),
+                foregroundImage: AssetImage('assets/profile.jpg',),
               ),
             ),
           ),
           Center(
             child: Text(
-              "Agus",
+              "Agrow User",
               style: Theme.of(context).textTheme.titleMedium,
             ),
           ),

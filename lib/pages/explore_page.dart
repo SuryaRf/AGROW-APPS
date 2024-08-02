@@ -21,25 +21,25 @@ class _ExplorePageState extends State<ExplorePage> {
         automaticallyImplyLeading: false,
         centerTitle: false,
         title: Padding(
-          padding: const EdgeInsets.only(top: 15),
+          padding: const EdgeInsets.only(top: 15,left: 10),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                "Hello AFriends 👋🏾",
+                "Halo AFriends 👋🏾",
                 style: GoogleFonts.poppins().copyWith(
                   fontWeight: FontWeight.bold,
                   fontSize: 20
                 ),
               ),
-              Text("Enjoy our services",
+              Text("Apa yang ingin kamu lakukan?",
                   style: Theme.of(context).textTheme.bodySmall)
             ],
           ),
         ),
         actions: [
           Padding(
-            padding: const EdgeInsets.only(right: 8.0, top: 15),
+            padding: const EdgeInsets.only(right: 10.0, top: 15),
             child: IconButton.filledTonal(
               onPressed: () {},
               icon: badges.Badge(
@@ -99,15 +99,15 @@ class _ExplorePageState extends State<ExplorePage> {
           //   ),
           // ),
           Padding(
-            padding: const EdgeInsets.only(bottom: 25),
+            padding: const EdgeInsets.only(bottom: 25, left: 5),
             child: SizedBox(
-              height: 170,
+              height: 190,
               child: Card(
                 color: Colors.green.shade50,
                 elevation: 0.1,
                 shadowColor: Colors.green.shade50,
                 child: Padding(
-                  padding: const EdgeInsets.all(12),
+                  padding: const EdgeInsets.all(10),
                   child: Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -117,12 +117,14 @@ class _ExplorePageState extends State<ExplorePage> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              "Tracking Your Plant",
+                              "Pantau Tanaman Anda",
                               style: Theme.of(context).textTheme.titleLarge!.copyWith(
                                     color: Colors.green.shade700,
+                                    fontSize: 22,
+                                    fontWeight: FontWeight.bold,
                                   ),
                             ),
-                            const Text("Get free support from our customer service"),
+                            const Text("Kembangkan Tanaman Anda Dengan Bantuan Fitur Kami"),
                             FilledButton(
                               onPressed: () {
                                 Navigator.of(context).pushReplacement(
@@ -131,14 +133,14 @@ class _ExplorePageState extends State<ExplorePage> {
                                   ),
                                 );
                               },
-                              child: const Text("Tracking now"),
+                              child: const Text("Pantau Sekarang"),
                             ),
                           ],
                         ),
                       ),
                       Image.asset(
                         'assets/farmer2.png',
-                        width: 140,
+                        width: 160,
                       )
                     ],
                   ),
@@ -150,7 +152,7 @@ class _ExplorePageState extends State<ExplorePage> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Padding(
-                padding: const EdgeInsets.only(left: 5),
+                padding: const EdgeInsets.only(left: 10),
                 child: Text(
                   "Produk Kami",
                   style: GoogleFonts.poppins().copyWith(
@@ -176,7 +178,10 @@ class _ExplorePageState extends State<ExplorePage> {
               mainAxisSpacing: 16,
             ),
             itemBuilder: (context, index) {
-              return ProductCard(product: products[index]);
+              return Padding(
+                padding: const EdgeInsets.only(left: 10),
+                child: ProductCard(product: products[index]),
+              );
             },
           )
         ],

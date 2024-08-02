@@ -5,6 +5,7 @@ import 'package:easy_stepper/easy_stepper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
 
+
 class OrderDetailsPage extends StatelessWidget {
   const OrderDetailsPage({
     Key? key,
@@ -16,27 +17,27 @@ class OrderDetailsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final orderTimelines = ['Processing', 'Picking', 'Shipping', 'Delivered'];
+    final orderTimelines = ['Proses', 'Pengemasan', 'Dikirim', 'Sampai'];
     int activeStep = 2;
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Order Details"),
+        title: const Text("Detail Pesanan"),
       ),
       body: ListView(
         padding: const EdgeInsets.all(16),
         children: [
           EasyStepper(
             activeStep: activeStep,
-            lineLength: 70,
-            lineSpace: 0,
-            defaultLineColor: Colors.grey.shade300,
-            finishedLineColor: theme.colorScheme.primary,
+            // lineLength: 70,
+            // lineSpace: 0,
+            // defaultLineColor: Colors.grey.shade300,
+            // finishedLineColor: theme.colorScheme.primary,
             activeStepTextColor: Colors.black87,
             finishedStepTextColor: Colors.black87,
-            internalPadding: 0,
+            internalPadding: 20,
             showLoadingAnimation: true,
             stepRadius: 8,
-            lineThickness: 1.5,
+            // lineThickness: 1.5,
             steps: List.generate(orderTimelines.length, (index) {
               return EasyStep(
                 customStep: CircleAvatar(
@@ -74,7 +75,7 @@ class OrderDetailsPage extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        "Order: ${order.id}",
+                        "Pesanan: ${order.id}",
                         style: theme.textTheme.titleSmall?.copyWith(
                           fontWeight: FontWeight.bold,
                         ),
@@ -98,7 +99,7 @@ class OrderDetailsPage extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      const Text("Delivery estimate"),
+                      const Text("Perkiraan pengiriman"),
                       Text(
                         order.date.deliveryDate,
                         style: const TextStyle(
@@ -109,7 +110,7 @@ class OrderDetailsPage extends StatelessWidget {
                   ),
                   const SizedBox(height: 15),
                   Text(
-                    "Jessi Williams",
+                    "Agung",
                     style: theme.textTheme.titleSmall
                         ?.copyWith(fontWeight: FontWeight.bold),
                   ),
@@ -120,7 +121,7 @@ class OrderDetailsPage extends StatelessWidget {
                       SizedBox(width: 5),
                       Expanded(
                         child: Text(
-                          "6844 Hall Spring Suite 134\n East Annabury, OK 42291",
+                          "Jl. Kembang Turi Jl. Kerto Asri No.7, Jatimulyo,\n Kec. Lowokwaru, Kota Malang, Jawa Timur 65145",
                         ),
                       ),
                     ],
@@ -141,9 +142,9 @@ class OrderDetailsPage extends StatelessWidget {
                   const Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text("Payment method"),
+                      Text("Metode Pembayaran"),
                       Text(
-                        "Credit Card **1234",
+                        "Dana **1234",
                         style: TextStyle(fontWeight: FontWeight.bold),
                       ),
                     ],

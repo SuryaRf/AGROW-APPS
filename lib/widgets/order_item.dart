@@ -31,7 +31,7 @@ class OrderItem extends StatelessWidget {
             Row(
               children: [
                 Text(
-                  "Order: ${order.id}",
+                  "Pesanan: ${order.id}",
                   style: theme.textTheme.titleSmall?.copyWith(
                     fontWeight: FontWeight.bold,
                   ),
@@ -43,7 +43,7 @@ class OrderItem extends StatelessWidget {
                 ),
                 const SizedBox(width: 5),
                 Text(
-                  "\$${totalPrice.toStringAsFixed(2)}",
+                  "Rp.${totalPrice.toStringAsFixed(2)}k",
                   style: const TextStyle(
                     fontWeight: FontWeight.bold,
                   ),
@@ -83,7 +83,7 @@ class OrderItem extends StatelessWidget {
                   );
                 },
                 icon: const Icon(IconlyBold.arrowRight),
-                label: const Text("View all"),
+                label: const Text("Lihat semua"),
               ))
           ],
         ),

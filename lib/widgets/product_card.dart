@@ -1,6 +1,7 @@
 import 'package:agriplant/models/product.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import '../pages/product_details_page.dart';
 
@@ -29,7 +30,7 @@ class ProductCard extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
-              height: 120,
+              height: 100,
               alignment: Alignment.topRight,
               width: double.infinity,
               padding: const EdgeInsets.all(8),
@@ -59,7 +60,11 @@ class ProductCard extends StatelessWidget {
                     padding: const EdgeInsets.only(bottom: 3.0),
                     child: Text(
                       product.name,
-                      style: Theme.of(context).textTheme.bodyLarge,
+                      style: GoogleFonts.poppins().copyWith(
+                              fontSize: 14,
+                              color: Colors.black,
+                              fontWeight: FontWeight.w500,
+                            ),
                     ),
                   ),
                   Row(
@@ -69,11 +74,19 @@ class ProductCard extends StatelessWidget {
                         text: TextSpan(
                           children: [
                             TextSpan(
-                                text: "\$${product.price}",
-                                style: Theme.of(context).textTheme.bodySmall),
+                                text: "Rp.${product.price}k",
+                                style: GoogleFonts.poppins().copyWith(
+                              fontSize: 14,
+                              color: Colors.black,
+                              fontWeight: FontWeight.w200,
+                            ),),
                             TextSpan(
                                 text: "/${product.unit}",
-                                style: Theme.of(context).textTheme.bodySmall),
+                                style: GoogleFonts.poppins().copyWith(
+                              fontSize: 14,
+                              color: Colors.black,
+                              fontWeight: FontWeight.w200,
+                            ),),
                           ],
                         ),
                       ),

@@ -1,7 +1,10 @@
 import 'package:agriplant/pages/home_page.dart';
+import 'package:agriplant/pages/number_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class OnboardingPage extends StatelessWidget {
   const OnboardingPage({super.key});
@@ -14,29 +17,100 @@ class OnboardingPage extends StatelessWidget {
         child: Center(
           child: Column(
             children: [
-              const Spacer(),
+              const SizedBox(height: 140),
               ConstrainedBox(
                 constraints: const BoxConstraints(maxWidth: 380),
                 child: Image.asset('assets/onboard.png'),
               ),
-              const Spacer(),
+              const SizedBox(height: 130),
               Text('Agrow Application',
-                  style: Theme.of(context).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.bold)),
-              const Padding(
-                padding: EdgeInsets.only(top: 30, bottom: 30),
-                child: Text(
-                  "Get your agriculture products from the comfort of your home. You're just a few clicks away from your favorite products.",
+                  style: Theme.of(context)
+                      .textTheme
+                      .titleLarge
+                      ?.copyWith(fontWeight: FontWeight.bold)),
+              Padding(
+                padding: EdgeInsets.only(top: 20, bottom: 30),
+                child: RichText(
                   textAlign: TextAlign.center,
+                  text: TextSpan(
+                    text:
+                        "Dapatkan Pupuk Organik Cair Hanya dari Rumah dan Pantau Pertumbuhan Tanaman Anda dengan Mudah Bersama ",
+                    style:
+                        GoogleFonts.poppins(color: Colors.black, fontWeight: FontWeight.w400), // Gaya umum untuk teks
+                    children: <TextSpan>[
+                      TextSpan(
+                        text: "Agrow",
+                        style: GoogleFonts.poppins(color: Colors.green, fontWeight: FontWeight.w500, fontSize: 15), // Gaya khusus untuk "Agrow"
+                      ),
+                      TextSpan(
+                        text: ".",
+                      ),
+                    ],
+                  ),
                 ),
               ),
               /**/
-              FilledButton.tonalIcon(
-                onPressed: () {
-                  Navigator.of(context).pushReplacement(CupertinoPageRoute(builder: (context) => const HomePage()));
-                },
-                icon: const Icon(IconlyLight.login),
-                label: const Text("Continue with Google"),
-              )
+              Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+                InkWell(
+                  onTap: () {
+                    Navigator.of(context).pushReplacement(CupertinoPageRoute(
+                        builder: (context) => const HomePage()));
+                  },
+                  child: Container(
+                    width: 350,
+                    height: 45,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(20),
+                        border: Border.all(color: Colors.black)),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.only(
+                              right: 10, top: 3, bottom: 3),
+                          child: Image.asset('assets/google.png',
+                              height: 20, width: 20),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(
+                              right: 5, top: 3, bottom: 3),
+                          child: Text("Masuk Dengan Google"),
+                        )
+                      ],
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 20),
+                InkWell(
+                  onTap: () {
+                    Navigator.of(context).pushReplacement(CupertinoPageRoute(
+                        builder: (context) => const NumberPage()));
+                  },
+                  child: Container(
+                    width: 350,
+                    height: 45,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(20),
+                        border: Border.all(color: Colors.black)),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.only(
+                              right: 10, top: 3, bottom: 3),
+                          child: Image.asset('assets/phone-call.png',
+                              height: 20, width: 20),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(
+                              right: 5, top: 3, bottom: 3),
+                          child: Text("Masuk Dengan Nomor Telepon"),
+                        )
+                      ],
+                    ),
+                  ),
+                ),
+              ]),
             ],
           ),
         ),

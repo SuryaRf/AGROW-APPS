@@ -9,14 +9,14 @@ class OrdersPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final tabs = ["Processing", "Picking", "Shipping", "Delivered"];
+    final tabs = ['Proses', 'Pengemasan', 'Dikirim', 'Sampai'];
 
     return DefaultTabController(
       length: 4,
       initialIndex: 0,
       child: Scaffold(
         appBar: AppBar(
-          title: const Text("My orders"),
+          title: const Text("Pesanan Saya"),
           bottom: TabBar(
             physics: const BouncingScrollPhysics(),
             isScrollable: true,

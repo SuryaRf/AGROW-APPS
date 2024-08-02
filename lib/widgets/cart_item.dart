@@ -55,7 +55,7 @@ class CartItem extends StatelessWidget {
         return await completer.future;
       },
       child: SizedBox(
-        height: 125,
+        height: 145,
         child: Card(
           clipBehavior: Clip.antiAlias,
           shape: RoundedRectangleBorder(
@@ -97,7 +97,7 @@ class CartItem extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
-                            "\$${cartItem.price}",
+                            "Rp.${cartItem.price}k",
                             style: Theme.of(context)
                                 .textTheme
                                 .titleMedium
@@ -105,41 +105,41 @@ class CartItem extends StatelessWidget {
                                   color: Theme.of(context).colorScheme.primary,
                                 ),
                           ),
-                          SizedBox(
-                            height: 30,
-                            child: ToggleButtons(
-                              borderRadius: BorderRadius.circular(99),
-                              constraints: const BoxConstraints(
-                                minHeight: 30,
-                                minWidth: 30,
-                              ),
-                              selectedColor:
-                                  Theme.of(context).colorScheme.primary,
-                              isSelected: const [
-                                true,
-                                false,
-                                true,
-                              ],
-                              children: [
-                                const Icon(
-                                  Icons.remove,
-                                  size: 20,
-                                ),
-                                Text("${Random().nextInt(5) + 1}"),
-                                const Icon(
-                                  Icons.add,
-                                  size: 20,
-                                ),
-                              ],
-                              onPressed: (int index) {
-                                if (index == 0) {
-                                  // decrease quantity
-                                } else if (index == 2) {
-                                  // increase quantity
-                                }
-                              },
-                            ),
-                          ),
+                          // SizedBox(
+                          //   height: 30,
+                          //   child: ToggleButtons(
+                          //     borderRadius: BorderRadius.circular(99),
+                          //     constraints: const BoxConstraints(
+                          //       minHeight: 30,
+                          //       minWidth: 30,
+                          //     ),
+                          //     selectedColor:
+                          //         Theme.of(context).colorScheme.primary,
+                          //     isSelected: const [
+                          //       true,
+                          //       false,
+                          //       true,
+                          //     ],
+                          //     children: [
+                          //       const Icon(
+                          //         Icons.remove,
+                          //         size: 20,
+                          //       ),
+                          //       Text("${Random().nextInt(5) + 1}"),
+                          //       const Icon(
+                          //         Icons.add,
+                          //         size: 20,
+                          //       ),
+                          //     ],
+                          //     onPressed: (int index) {
+                          //       if (index == 0) {
+                          //         // decrease quantity
+                          //       } else if (index == 2) {
+                          //         // increase quantity
+                          //       }
+                          //     },
+                          //   ),
+                          // ),
                         ],
                       )
                     ],
