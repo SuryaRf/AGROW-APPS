@@ -39,13 +39,7 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Details"),
-        actions: [
-          IconButton(
-            onPressed: () {},
-            icon: const Icon(IconlyLight.bookmark),
-          ),
-        ],
+        title: const Text("Detail"),
       ),
       body: ListView(
         padding: const EdgeInsets.all(16),
@@ -80,7 +74,7 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                 text: TextSpan(
                   children: [
                     TextSpan(
-                        text: "\$${widget.product.price}",
+                        text: "Rp${widget.product.price}k",
                         style: Theme.of(context).textTheme.titleLarge),
                     TextSpan(
                         text: "/${widget.product.unit}",
@@ -134,7 +128,7 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
             ],
           ),
           const SizedBox(height: 20),
-          Text("Description",
+          Text("Deskripsi",
               style: Theme.of(context)
                   .textTheme
                   .titleMedium!
@@ -151,7 +145,7 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                 ),
                 TextSpan(
                   recognizer: readMoreGestureRecognizer,
-                  text: showMore ? " Read less" : " Read more",
+                  text: showMore ? " Lebih sedikit" : " Lebih banyak",
                   style: TextStyle(
                     color: Theme.of(context).colorScheme.primary,
                   ),
@@ -161,7 +155,7 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
           ),
           const SizedBox(height: 20),
           Text(
-            "Similar Products",
+            "Produk sejenis",
             style: Theme.of(context)
                 .textTheme
                 .titleMedium!
@@ -197,7 +191,7 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
           FilledButton.icon(
               onPressed: () {},
               icon: const Icon(IconlyLight.bag2),
-              label: const Text("Add to cart"))
+              label: const Text("Tambahkan ke keranjang"))
         ],
       ),
     );

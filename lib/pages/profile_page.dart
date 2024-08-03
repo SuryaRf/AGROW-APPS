@@ -24,7 +24,7 @@ class ProfilePage extends StatelessWidget {
           ),
           Center(
             child: Text(
-              "Agrow User",
+              "Pengguna Agrow",
               style: Theme.of(context).textTheme.titleMedium,
             ),
           ),
@@ -36,7 +36,7 @@ class ProfilePage extends StatelessWidget {
           ),
           const SizedBox(height: 25),
           ListTile(
-            title: const Text("My orders"),
+            title: const Text("Pesanan saya"),
             leading: const Icon(IconlyLight.bag),
             onTap: () {
               Navigator.push(
@@ -46,17 +46,17 @@ class ProfilePage extends StatelessWidget {
                   ));
             },
           ), ListTile(
-            title: const Text("Settings"),
+            title: const Text("Pengaturan"),
             leading: const Icon(IconlyLight.setting),
             onTap: () {},
           ),
           ListTile(
-            title: const Text("About us"),
+            title: const Text("Tentang kami"),
             leading: const Icon(IconlyLight.infoSquare),
             onTap: () {},
           ),
           ListTile(
-            title: const Text("Logout"),
+            title: const Text("Keluar"),
             leading: const Icon(IconlyLight.logout),
             onTap: () {},
           ),

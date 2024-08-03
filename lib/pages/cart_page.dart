@@ -1,4 +1,5 @@
 import 'package:agriplant/data/products.dart';
+import 'package:agriplant/pages/payment_page.dart';
 import 'package:agriplant/widgets/cart_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
@@ -43,11 +44,16 @@ class _CartPageState extends State<CartPage> {
 
   @override
   Widget build(BuildContext context) {
-    final total = cartItems.asMap().entries.map((entry) {
-      int index = entry.key;
-      var item = entry.value;
-      return item.price * (_quantities[index] ?? 1);
-    }).reduce((value, element) => value + element).toStringAsFixed(2);
+    final total = cartItems
+        .asMap()
+        .entries
+        .map((entry) {
+          int index = entry.key;
+          var item = entry.value;
+          return item.price * (_quantities[index] ?? 1);
+        })
+        .reduce((value, element) => value + element)
+        .toStringAsFixed(2);
 
     return Scaffold(
       body: SingleChildScrollView(
@@ -86,7 +92,8 @@ class _CartPageState extends State<CartPage> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text("Total (${getTotalItems()} items)"), // Updated to display total items
+                Text(
+                    "Total (${getTotalItems()} items)"), // Updated to display total items
                 Text(
                   "Rp.${total}k",
                   style: Theme.of(context).textTheme.titleMedium?.copyWith(
@@ -100,8 +107,22 @@ class _CartPageState extends State<CartPage> {
             SizedBox(
               width: double.infinity,
               child: FilledButton.icon(
-                onPressed: () {},
-                label: const Text("Proceed to Checkout"),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => PaymentPage(
+                        cartItems: cartItems,
+                        quantities: _quantities,
+                      ),
+                    ),
+                  );
+                },
+                style: FilledButton.styleFrom(
+                        backgroundColor: Colors.green,
+
+                      ),
+                label: const Text("Lanjutkan ke Pembayaran"),
                 icon: const Icon(IconlyBold.arrowRight),
               ),
             ),
