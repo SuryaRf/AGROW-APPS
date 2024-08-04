@@ -105,7 +105,7 @@ class PaymentPage extends StatelessWidget {
                       ],
                     ),
                     trailing: Text(
-                        "Rp.${(item.price * quantity).toStringAsFixed(2)}k"),
+                        "Rp.${(item.price * quantity).toStringAsFixed(3)}"),
                   );
                 },
               ),
@@ -124,21 +124,22 @@ class PaymentPage extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         const Text("Subtotal Produk"),
-                        Text("Rp.${subtotal.toStringAsFixed(2)}k"),
+                        Text("Rp.${subtotal.toStringAsFixed(3)}"),
+
                       ],
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         const Text("Subtotal Pengiriman"),
-                        Text("Rp.${shipping.toStringAsFixed(2)}k"),
+                        Text("Rp.${shipping.toStringAsFixed(3)}"),
                       ],
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         const Text("Biaya Layanan"),
-                        Text("Rp.${serviceFee.toStringAsFixed(2)}k"),
+                        Text("Rp.${serviceFee.toStringAsFixed(3)}"),
                       ],
                     ),
                     const Divider(height: 20, thickness: 1),
@@ -150,7 +151,7 @@ class PaymentPage extends StatelessWidget {
                           style: TextStyle(fontWeight: FontWeight.bold),
                         ),
                         Text(
-                          "Rp.${total.toStringAsFixed(2)}k",
+                          "Rp.${total.toStringAsFixed(3)}",
                           style: const TextStyle(fontWeight: FontWeight.bold),
                         ),
                       ],
@@ -238,7 +239,7 @@ class PaymentPage extends StatelessWidget {
                               ),
                         ),
                         Text(
-                          "Rp.${total.toStringAsFixed(2)}k",
+                          "Rp.${total.toStringAsFixed(3)}k",
                           style: Theme.of(context)
                               .textTheme
                               .headlineSmall

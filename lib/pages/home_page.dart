@@ -5,6 +5,8 @@ import 'package:agriplant/pages/services_page.dart';
 import 'package:agriplant/pages/cart_page.dart';
 import 'package:agriplant/pages/profile_page.dart';
 
+import 'scan_page.dart';
+
 class HomePage extends StatefulWidget {
   final int initialPageIndex;
   const HomePage({super.key, this.initialPageIndex = 0});
@@ -49,7 +51,9 @@ class _HomePageState extends State<HomePage> {
           borderRadius: BorderRadius.all(Radius.circular(45.0)),
         ),
         backgroundColor: Colors.green,
-        onPressed: () {},
+        onPressed: () {
+          Navigator.push(context, MaterialPageRoute(builder: (context) => ScanPage()));
+        },
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       body: PageStorage(

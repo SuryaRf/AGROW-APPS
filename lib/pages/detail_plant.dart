@@ -1,10 +1,10 @@
-import 'package:agriplant/pages/ai_grow.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:agriplant/pages/plant_monitoring.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart'; // Import intl
-
-import 'plant_monitoring.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'ai_grow.dart';
+import 'reminder_dialog.dart'; // Import ReminderDialog
 
 class DetailPlant extends StatefulWidget {
   DetailPlant(this.doc, {Key? key}) : super(key: key);
@@ -29,6 +29,7 @@ class _DetailPlantState extends State<DetailPlant> {
 
     return Scaffold(
       appBar: AppBar(
+        title: const Text('Detail Tanaman'),
         leading: IconButton(
           onPressed: () {
             Navigator.pop(context);
@@ -81,7 +82,7 @@ class _DetailPlantState extends State<DetailPlant> {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10),
               child: Text(
-                "Tanggal Pembuatan: $formattedDate", // Use formatted date
+                "Tanggal Pembuatan: $formattedDate",
                 style: GoogleFonts.poppins().copyWith(
                   fontSize: 14,
                   fontWeight: FontWeight.normal,
@@ -203,7 +204,7 @@ class _DetailPlantState extends State<DetailPlant> {
                         Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: Text(
-                            "Chat \n Dengan AI grow",
+                            "Chat \nDengan AI Grow",
                             textAlign: TextAlign.center,
                             style: GoogleFonts.poppins().copyWith(
                               fontSize: 14,
@@ -216,10 +217,65 @@ class _DetailPlantState extends State<DetailPlant> {
                   ),
                 ),
               ],
+            ),
+            const SizedBox(height: 20),
+            Padding(
+              padding: const EdgeInsets.only(left: 20, right: 20, top: 20),
+              child: InkWell(
+                onTap: () {
+                  _showReminderDialog(context);
+                },
+                child: Container(
+                  height: 70,
+                  width: w * 0.9,
+                  decoration: BoxDecoration(
+                    border: Border.all(color: Colors.green.shade100),
+                    color: Color.fromARGB(255, 243, 243, 243),
+                    borderRadius: BorderRadius.circular(20),
+                    boxShadow: [
+                      BoxShadow(
+                          color: Colors.green.withOpacity(0.5),
+                          blurRadius: 3,
+                          spreadRadius: 1,
+                          offset: Offset(1, 2))
+                    ],
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 30),
+                    child: Row(
+                      children: [
+                        Image.asset(
+                          "assets/notification.png",
+                          height: 30,
+                          width: 30,
+                        ),
+                        const SizedBox(width: 20,),
+                        Text(
+                          "Pengingat Penyiraman Tanaman",
+                          style: GoogleFonts.poppins().copyWith(
+                            fontSize: 14,
+                            fontWeight: FontWeight.w700,
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                ),
+              ),
             )
           ],
         ),
       ),
+    );
+  }
+
+  // Fungsi untuk menampilkan dialog pengingat penyiraman
+  void _showReminderDialog(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return ReminderDialog(); // Use the custom dialog
+      },
     );
   }
 }

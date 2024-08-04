@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:agriplant/pages/add_plant.dart';
 import 'package:agriplant/pages/detail_plant.dart';
@@ -13,6 +14,19 @@ class ServicesPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: const Text('Tracking Tanaman', style: TextStyle(fontWeight: FontWeight.bold),),
+        centerTitle: false,
+        automaticallyImplyLeading: false,
+        backgroundColor: Colors.green.shade50,
+        bottom: PreferredSize(
+          preferredSize: const Size.fromHeight(1.0),
+          child: Container(
+            color: Colors.green.shade300, // Warna border bawah
+            height: 1.0, // Tinggi border
+          ),
+        ),
+      ),
       floatingActionButton: FloatingActionButton(
         child: Icon(
           IconlyLight.paperPlus,
@@ -77,16 +91,10 @@ class ServicesPage extends StatelessWidget {
 
   // Fungsi untuk menghapus dokumen dari Firestore
   void deletePlant(String id) {
-    FirebaseFirestore.instance
-        .collection("plants")
-        .doc(id)
-        .delete()
-        .then((_) {
+    FirebaseFirestore.instance.collection("plants").doc(id).delete().then((_) {
       print("Document successfully deleted!");
     }).catchError((error) {
       print("Error removing document: $error");
     });
   }
 }
-
-

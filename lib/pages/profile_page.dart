@@ -1,7 +1,10 @@
 import 'package:agriplant/pages/orders_page.dart';
+import 'package:agriplant/pages/seting_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
+
+import 'aboutus_page.dart';
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({super.key});
@@ -48,12 +51,16 @@ class ProfilePage extends StatelessWidget {
           ), ListTile(
             title: const Text("Pengaturan"),
             leading: const Icon(IconlyLight.setting),
-            onTap: () {},
+            onTap: () {
+              Navigator.push(context, MaterialPageRoute(builder: (context) => const SettingsPage()));
+            },
           ),
           ListTile(
             title: const Text("Tentang kami"),
             leading: const Icon(IconlyLight.infoSquare),
-            onTap: () {},
+            onTap: () {
+              Navigator.push(context, MaterialPageRoute(builder: (context) => const AboutUsPage()));
+            },
           ),
           ListTile(
             title: const Text("Keluar"),

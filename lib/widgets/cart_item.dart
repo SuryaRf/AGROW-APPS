@@ -34,14 +34,14 @@ class CartItem extends StatelessWidget {
           SnackBar(
             duration: const Duration(seconds: 3),
             action: SnackBarAction(
-              label: "Keep",
+              label: "Batalkan",
               onPressed: () {
                 completer.complete(false);
                 ScaffoldMessenger.of(context).removeCurrentSnackBar();
               },
             ),
             content: const Text(
-              "Remove from cart?",
+              "Hapus dari keranjang?",
             ),
           ),
         );
@@ -58,9 +58,11 @@ class CartItem extends StatelessWidget {
         height: 145,
         child: Card(
           clipBehavior: Clip.antiAlias,
+          color: Colors.green.shade50,
           shape: RoundedRectangleBorder(
             borderRadius: const BorderRadius.all(Radius.circular(10)),
             side: BorderSide(color: Colors.grey.shade200),
+            
           ),
           elevation: 0.1,
           child: Padding(
@@ -97,7 +99,7 @@ class CartItem extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
-                            "Rp.${cartItem.price}k",
+                            "Rp.${cartItem.price.toStringAsFixed(3)}",
                             style: Theme.of(context)
                                 .textTheme
                                 .titleMedium

@@ -16,7 +16,8 @@ class ProductCard extends StatelessWidget {
       onTap: () {
         Navigator.of(context).push(
           MaterialPageRoute(
-              builder: (_) => ProductDetailsPage(product: product)),
+            builder: (_) => ProductDetailsPage(product: product),
+          ),
         );
       },
       child: Card(
@@ -30,7 +31,7 @@ class ProductCard extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
-              height: 100,
+              height: 115, // Meningkatkan tinggi container gambar
               alignment: Alignment.topRight,
               width: double.infinity,
               padding: const EdgeInsets.all(8),
@@ -52,7 +53,9 @@ class ProductCard extends StatelessWidget {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: const EdgeInsets.symmetric(
+                  horizontal: 8.0,
+                  vertical: 8.0), // Mengurangi padding vertikal
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -60,51 +63,65 @@ class ProductCard extends StatelessWidget {
                     padding: const EdgeInsets.only(bottom: 3.0),
                     child: Text(
                       product.name,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
                       style: GoogleFonts.poppins().copyWith(
-                              fontSize: 14,
-                              color: Colors.black,
-                              fontWeight: FontWeight.w500,
-                            ),
+                        fontSize: 14,
+                        color: Colors.black,
+                        fontWeight: FontWeight.w500,
+                      ),
                     ),
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      RichText(
-                        text: TextSpan(
-                          children: [
-                            TextSpan(
-                                text: "Rp.${product.price}k",
+                      Flexible(
+                        child: RichText(
+                          text: TextSpan(
+                            children: [
+                              TextSpan(
+                                text: "${product.unit}\n",
                                 style: GoogleFonts.poppins().copyWith(
-                              fontSize: 14,
-                              color: Colors.black,
-                              fontWeight: FontWeight.w200,
-                            ),),
-                            TextSpan(
-                                text: "/${product.unit}",
+                                  fontSize: 12,
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.w200,
+                                ),
+                              ),
+                              TextSpan(
+                                text: "Rp.${product.price.toStringAsFixed(3)}",
                                 style: GoogleFonts.poppins().copyWith(
-                              fontSize: 14,
-                              color: Colors.black,
-                              fontWeight: FontWeight.w200,
-                            ),),
-                          ],
+                                  fontSize: 14,
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.w200,
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                       SizedBox(
                         width: 30,
                         height: 30,
-                        child: IconButton.filled(
-                          padding: EdgeInsets.zero,
-                          onPressed: () {},
-                          iconSize: 18,
-                          icon: const Icon(Icons.add),
+                        child: Container(
+                          decoration: const BoxDecoration(
+                            shape: BoxShape.circle,
+                            color: Colors.green, // Warna bulatan diatur di sini
+                          ),
+                          child: IconButton(
+                            padding: EdgeInsets.zero,
+                            onPressed: () {},
+                            iconSize: 18,
+                            icon: const Icon(Icons.add,
+                                color:
+                                    Colors.white), // Warna ikon diatur di sini
+                          ),
                         ),
                       )
                     ],
-                  )
+                  ),
                 ],
               ),
-            )
+            ),
           ],
         ),
       ),

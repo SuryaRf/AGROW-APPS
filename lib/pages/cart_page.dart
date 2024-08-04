@@ -53,9 +53,22 @@ class _CartPageState extends State<CartPage> {
           return item.price * (_quantities[index] ?? 1);
         })
         .reduce((value, element) => value + element)
-        .toStringAsFixed(2);
+        .toStringAsFixed(3);
 
     return Scaffold(
+      appBar: AppBar(
+        title: const Text('Pembelian', style: TextStyle(fontWeight: FontWeight.bold),),
+        centerTitle: false,
+        automaticallyImplyLeading: false,
+        backgroundColor: Colors.green.shade50,
+        bottom: PreferredSize(
+          preferredSize: const Size.fromHeight(1.0),
+          child: Container(
+            color: Colors.green.shade300, // Warna border bawah
+            height: 1.0, // Tinggi border
+          ),
+        ),
+      ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(10),
         child: Column(
@@ -95,7 +108,7 @@ class _CartPageState extends State<CartPage> {
                 Text(
                     "Total (${getTotalItems()} items)"), // Updated to display total items
                 Text(
-                  "Rp.${total}k",
+                  "Rp.${total}",
                   style: Theme.of(context).textTheme.titleMedium?.copyWith(
                         color: Theme.of(context).colorScheme.primary,
                         fontWeight: FontWeight.bold,
