@@ -1,3 +1,4 @@
+import 'package:agriplant/pages/activated_page.dart';
 import 'package:agriplant/pages/orders_page.dart';
 import 'package:agriplant/pages/seting_page.dart';
 import 'package:flutter/material.dart';
@@ -11,17 +12,22 @@ class ProfilePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final height =
+        MediaQuery.of(context).size.height - AppBar().preferredSize.height;
+    final width = MediaQuery.of(context).size.width;
     return Scaffold(
       body: ListView(
         children: [
           Padding(
-            padding: const EdgeInsets.only(top: 20, bottom: 15),
+            padding:  EdgeInsets.only(top: height * 0.03, bottom: height * 0.015),
             child: CircleAvatar(
               radius: 62,
               backgroundColor: Theme.of(context).colorScheme.primary,
               child: const CircleAvatar(
                 radius: 60,
-                foregroundImage: AssetImage('assets/profile.jpg',),
+                foregroundImage: AssetImage(
+                  'assets/farmer.png',
+                ),
               ),
             ),
           ),
@@ -37,7 +43,7 @@ class ProfilePage extends StatelessWidget {
               style: Theme.of(context).textTheme.bodySmall,
             ),
           ),
-          const SizedBox(height: 25),
+           SizedBox(height: height * 0.03),
           ListTile(
             title: const Text("Pesanan saya"),
             leading: const Icon(IconlyLight.bag),
@@ -48,24 +54,31 @@ class ProfilePage extends StatelessWidget {
                     builder: (context) => const OrdersPage(),
                   ));
             },
-          ), ListTile(
+          ),
+          ListTile(
             title: const Text("Pengaturan"),
             leading: const Icon(IconlyLight.setting),
             onTap: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) => const SettingsPage()));
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const SettingsPage()));
             },
           ),
           ListTile(
             title: const Text("Tentang kami"),
             leading: const Icon(IconlyLight.infoSquare),
             onTap: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) => const AboutUsPage()));
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => const AboutUsPage()));
             },
           ),
           ListTile(
             title: const Text("Keluar"),
             leading: const Icon(IconlyLight.logout),
-            onTap: () {},
+            onTap: () {
+              Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const ActivatedPage()));
+            },
           ),
         ],
       ),

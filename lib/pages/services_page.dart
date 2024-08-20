@@ -28,12 +28,7 @@ class ServicesPage extends StatelessWidget {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        child: Icon(
-          IconlyLight.paperPlus,
-          size: 30,
-          color: Colors.white,
-        ),
-        shape: RoundedRectangleBorder(
+        shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.all(Radius.circular(45.0)),
         ),
         backgroundColor: Colors.green,
@@ -41,6 +36,11 @@ class ServicesPage extends StatelessWidget {
           Navigator.push(
               context, MaterialPageRoute(builder: (context) => AddPlant()));
         },
+        child: const Icon(
+          IconlyLight.paperPlus,
+          size: 30,
+          color: Colors.white,
+        ),
       ),
       body: Column(
         children: [

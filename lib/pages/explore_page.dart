@@ -16,12 +16,15 @@ class ExplorePage extends StatefulWidget {
 class _ExplorePageState extends State<ExplorePage> {
   @override
   Widget build(BuildContext context) {
+    final height =
+        MediaQuery.of(context).size.height - AppBar().preferredSize.height;
+    final width = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
         centerTitle: false,
         title: Padding(
-          padding: const EdgeInsets.only(top: 15, left: 10),
+          padding:  EdgeInsets.only(top: height * 0.015, left: width * 0.03),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -37,7 +40,7 @@ class _ExplorePageState extends State<ExplorePage> {
         ),
         actions: [
           Padding(
-            padding: const EdgeInsets.only(right: 10.0, top: 15),
+            padding:  EdgeInsets.only(right: width * 0.03, top: height * 0.015),
             child: IconButton.filledTonal(
               onPressed: () {},
               icon: badges.Badge(
@@ -58,107 +61,109 @@ class _ExplorePageState extends State<ExplorePage> {
           ),
         ],
       ),
-      body: ListView(
-        padding: const EdgeInsets.all(16.0),
-        children: [
-          Padding(
-            padding: const EdgeInsets.only(bottom: 25, left: 5),
-            child: SizedBox(
-              height: 190,
-              child: Card(
-                color: Colors.green.shade50,
-                elevation: 0.1,
-                shadowColor: Colors.green.shade50,
-                child: Padding(
-                  padding: const EdgeInsets.all(10),
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Flexible(
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              "Pantau Tanaman Anda",
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .titleLarge!
-                                  .copyWith(
-                                    color: Colors.green.shade700,
-                                    fontSize: 22,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                            ),
-                            const Text(
-                                "Kembangkan Tanaman Anda Dengan Bantuan Fitur Kami"),
-                            FilledButton(
-                              style: FilledButton.styleFrom(
-                                backgroundColor: Colors.green,
-                                minimumSize: const Size.fromHeight(
-                                    43), 
-                                    // s Tambahkan ukuran minimal untuk tinggi
+      body: SafeArea(
+        child: ListView(
+          padding: const EdgeInsets.all(16.0),
+          children: [
+            Padding(
+              padding:  EdgeInsets.only(bottom: height * 0.025, left: width * 0.005),
+              child: SizedBox(
+                height: height * 0.23,
+                child: Card(
+                  color: Colors.green.shade50,
+                  elevation: 0.1,
+                  shadowColor: Colors.green.shade50,
+                  child: Padding(
+                    padding: const EdgeInsets.all(10),
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Flexible(
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                "Pantau Tanaman Anda",
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .titleLarge!
+                                    .copyWith(
+                                      color: Colors.green.shade700,
+                                      fontSize: 22,
+                                      fontWeight: FontWeight.bold,
+                                    ),
                               ),
-                              onPressed: () {
-                                Navigator.of(context).pushReplacement(
-                                  MaterialPageRoute(
-                                    builder: (context) =>
-                                        HomePage(initialPageIndex: 1),
-                                  ),
-                                );
-                              },
-                              child: const Text("Pantau Sekarang", style: TextStyle(fontSize: 15)),
-                            ),
-                          ],
+                              const Text(
+                                  "Kembangkan Tanaman Anda Dengan Bantuan Fitur Kami"),
+                              FilledButton(
+                                style: FilledButton.styleFrom(
+                                  backgroundColor: Colors.green,
+                                  minimumSize: const Size.fromHeight(43),
+                                  // s Tambahkan ukuran minimal untuk tinggi
+                                ),
+                                onPressed: () {
+                                  Navigator.of(context).pushReplacement(
+                                    MaterialPageRoute(
+                                      builder: (context) =>
+                                          const HomePage(initialPageIndex: 1),
+                                    ),
+                                  );
+                                },
+                                child: const Text("Pantau Sekarang",
+                                    style: TextStyle(fontSize: 15)),
+                              ),
+                            ],
+                          ),
                         ),
-                      ),
-                      Image.asset(
-                        'assets/farmer2.png',
-                        width: 160,
-                      )
-                    ],
+                        Image.asset(
+                          'assets/farmer2.png',
+                          width: width * 0.35,
+                        )
+                      ],
+                    ),
                   ),
                 ),
               ),
             ),
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Padding(
-                padding: const EdgeInsets.only(left: 10),
-                child: Text(
-                  "Produk Kami",
-                  style: GoogleFonts.poppins().copyWith(
-                    fontSize: 16,
-                    fontWeight: FontWeight.w600,
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(left: 10),
+                  child: Text(
+                    "Produk Kami",
+                    style: GoogleFonts.poppins().copyWith(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w600,
+                    ),
                   ),
                 ),
-              ),
-              TextButton(
-                onPressed: () {},
-                child: const Text("Lihat Semua"),
-              ),
-            ],
-          ),
-          GridView.builder(
-            itemCount: products.length,
-            shrinkWrap: true,
-            physics: const NeverScrollableScrollPhysics(),
-            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 2,
-              childAspectRatio: 0.9,
-              crossAxisSpacing: 16,
-              mainAxisSpacing: 16,
+                TextButton(
+                  onPressed: () {},
+                  child: const Text("Lihat Semua"),
+                ),
+              ],
             ),
-            itemBuilder: (context, index) {
-              return Padding(
-                padding: const EdgeInsets.only(left: 10),
-                child: ProductCard(product: products[index]),
-              );
-            },
-          )
-        ],
+            GridView.builder(
+              itemCount: products.length,
+              shrinkWrap: true,
+              physics: const NeverScrollableScrollPhysics(),
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2,
+                childAspectRatio: 0.9,
+                crossAxisSpacing: 16,
+                mainAxisSpacing: 16,
+              ),
+              itemBuilder: (context, index) {
+                return Padding(
+                  padding: const EdgeInsets.only(left: 10),
+                  child: ProductCard(product: products[index]),
+                );
+              },
+            )
+          ],
+        ),
       ),
     );
   }

@@ -9,6 +9,10 @@ class OrdersPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+        final height =
+        MediaQuery.of(context).size.height - AppBar().preferredSize.height;
+
+    
     final tabs = ['Proses', 'Pengemasan', 'Dikirim', 'Sampai'];
 
     return DefaultTabController(
@@ -38,7 +42,7 @@ class OrdersPage extends StatelessWidget {
                   orders.length,
                   (index) {
                     return Padding(
-                      padding: const EdgeInsets.only(bottom: 10),
+                      padding:  EdgeInsets.only(bottom: height * 0.02),
                       child: OrderItem(order: orders[index]),
                     );
                   },

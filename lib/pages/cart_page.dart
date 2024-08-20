@@ -44,6 +44,9 @@ class _CartPageState extends State<CartPage> {
 
   @override
   Widget build(BuildContext context) {
+    final height =
+        MediaQuery.of(context).size.height - AppBar().preferredSize.height;
+    final width = MediaQuery.of(context).size.width;
     final total = cartItems
         .asMap()
         .entries
@@ -57,7 +60,10 @@ class _CartPageState extends State<CartPage> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Pembelian', style: TextStyle(fontWeight: FontWeight.bold),),
+        title: const Text(
+          'Pembelian',
+          style: TextStyle(fontWeight: FontWeight.bold),
+        ),
         centerTitle: false,
         automaticallyImplyLeading: false,
         backgroundColor: Colors.green.shade50,
@@ -101,14 +107,14 @@ class _CartPageState extends State<CartPage> {
                 );
               },
             ),
-            const SizedBox(height: 10),
+             SizedBox(height: height * 0.015),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
                     "Total (${getTotalItems()} items)"), // Updated to display total items
                 Text(
-                  "Rp.${total}",
+                  "Rp.$total",
                   style: Theme.of(context).textTheme.titleMedium?.copyWith(
                         color: Theme.of(context).colorScheme.primary,
                         fontWeight: FontWeight.bold,
@@ -116,7 +122,7 @@ class _CartPageState extends State<CartPage> {
                 ),
               ],
             ),
-            const SizedBox(height: 20),
+             SizedBox(height: height * 0.02),
             SizedBox(
               width: double.infinity,
               child: FilledButton.icon(
@@ -132,9 +138,8 @@ class _CartPageState extends State<CartPage> {
                   );
                 },
                 style: FilledButton.styleFrom(
-                        backgroundColor: Colors.green,
-
-                      ),
+                  backgroundColor: Colors.green,
+                ),
                 label: const Text("Lanjutkan ke Pembayaran"),
                 icon: const Icon(IconlyBold.arrowRight),
               ),

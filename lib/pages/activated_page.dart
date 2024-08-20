@@ -41,6 +41,9 @@ class _ActivatedPageState extends State<ActivatedPage> {
 
   @override
   Widget build(BuildContext context) {
+    final height =
+        MediaQuery.of(context).size.height - AppBar().preferredSize.height;
+    final width = MediaQuery.of(context).size.width;
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
@@ -63,7 +66,11 @@ class _ActivatedPageState extends State<ActivatedPage> {
                 Positioned(
                   top: -20,
                   left: -60,
-                  child: Image.asset("assets/blob.png", height: 200, width: 200,),
+                  child: Image.asset(
+                    "assets/blob.png",
+                    height: height * 0.2,
+                    width: width * 0.4,
+                  ),
                 ),
                 Column(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -75,12 +82,12 @@ class _ActivatedPageState extends State<ActivatedPage> {
                       style: GoogleFonts.poppins().copyWith(
                         fontSize: 22,
                         fontWeight: FontWeight.bold,
-                        color: Color.fromARGB(255, 76, 175, 80),
+                        color: const Color.fromARGB(255, 76, 175, 80),
                       ),
                     ),
-                    const SizedBox(height: 20),
+                     SizedBox(height: height * 0.03),
                     SizedBox(
-                      width: 200,
+                      width: width * 0.5,
                       child: TextField(
                         controller: _controller,
                         decoration: const InputDecoration(
@@ -96,14 +103,14 @@ class _ActivatedPageState extends State<ActivatedPage> {
                         ),
                       ),
                     ),
-                    const SizedBox(height: 20),
+                     SizedBox(height: height * 0.025),
                     ElevatedButton(
                       onPressed: _verifyActivationCode,
                       child: const Text("Continue"),
                     ),
                     if (_errorText.isNotEmpty)
                       Padding(
-                        padding: const EdgeInsets.only(top: 10),
+                        padding:  EdgeInsets.only(top: height * 0.025),
                         child: Text(
                           _errorText,
                           style: const TextStyle(color: Colors.red),

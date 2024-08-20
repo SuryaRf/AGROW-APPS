@@ -12,6 +12,9 @@ class CartItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final height =
+        MediaQuery.of(context).size.height - AppBar().preferredSize.height;
+    final width = MediaQuery.of(context).size.width;
     return Dismissible(
       key: UniqueKey(),
       direction: DismissDirection.endToStart,
@@ -55,14 +58,13 @@ class CartItem extends StatelessWidget {
         return await completer.future;
       },
       child: SizedBox(
-        height: 145,
+        height: height * 0.17,
         child: Card(
           clipBehavior: Clip.antiAlias,
           color: Colors.green.shade50,
           shape: RoundedRectangleBorder(
             borderRadius: const BorderRadius.all(Radius.circular(10)),
             side: BorderSide(color: Colors.grey.shade200),
-            
           ),
           elevation: 0.1,
           child: Padding(
@@ -71,7 +73,7 @@ class CartItem extends StatelessWidget {
               children: [
                 Container(
                   height: double.infinity,
-                  width: 90,
+                  width: width * 0.23,
                   margin: const EdgeInsets.only(right: 15),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10),
@@ -107,41 +109,6 @@ class CartItem extends StatelessWidget {
                                   color: Theme.of(context).colorScheme.primary,
                                 ),
                           ),
-                          // SizedBox(
-                          //   height: 30,
-                          //   child: ToggleButtons(
-                          //     borderRadius: BorderRadius.circular(99),
-                          //     constraints: const BoxConstraints(
-                          //       minHeight: 30,
-                          //       minWidth: 30,
-                          //     ),
-                          //     selectedColor:
-                          //         Theme.of(context).colorScheme.primary,
-                          //     isSelected: const [
-                          //       true,
-                          //       false,
-                          //       true,
-                          //     ],
-                          //     children: [
-                          //       const Icon(
-                          //         Icons.remove,
-                          //         size: 20,
-                          //       ),
-                          //       Text("${Random().nextInt(5) + 1}"),
-                          //       const Icon(
-                          //         Icons.add,
-                          //         size: 20,
-                          //       ),
-                          //     ],
-                          //     onPressed: (int index) {
-                          //       if (index == 0) {
-                          //         // decrease quantity
-                          //       } else if (index == 2) {
-                          //         // increase quantity
-                          //       }
-                          //     },
-                          //   ),
-                          // ),
                         ],
                       )
                     ],

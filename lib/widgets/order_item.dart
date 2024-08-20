@@ -12,6 +12,9 @@ class OrderItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final height =
+        MediaQuery.of(context).size.height - AppBar().preferredSize.height;
+    final width = MediaQuery.of(context).size.width;
     final products = order.products.take(visibleProducts).toList();
     final totalPrice = order.products
         .fold(0.0, (previousValue, element) => previousValue + element.price);
@@ -41,7 +44,7 @@ class OrderItem extends StatelessWidget {
                   "(${order.products.length} Items)",
                   style: theme.textTheme.bodySmall,
                 ),
-                const SizedBox(width: 5),
+                 SizedBox(width: width * 0.01),
                 Text(
                   "Rp.${totalPrice.toStringAsFixed(3)}",
                   style: const TextStyle(
@@ -50,7 +53,7 @@ class OrderItem extends StatelessWidget {
                 ),
               ],
             ),
-            const SizedBox(height: 20),
+             SizedBox(height: height * 0.025),
             ...List.generate(products.length, (index) {
               final product = products[index];
               return OrderProduct(order: order, product: product);
@@ -67,7 +70,7 @@ class OrderItem extends StatelessWidget {
                     builder: (context) {
                       return Container(
                         decoration: BoxDecoration(
-                          color: theme.colorScheme.background,
+                          color: theme.colorScheme.surface,
                         ),
                         height: MediaQuery.of(context).size.height * 0.5,
                         child: ListView.builder(

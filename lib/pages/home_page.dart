@@ -40,20 +40,24 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    final height =
+        MediaQuery.of(context).size.height - AppBar().preferredSize.height;
+    final width = MediaQuery.of(context).size.width;
     return Scaffold(
       key: _scaffoldKey,
       floatingActionButton: FloatingActionButton(
-        child: Icon(
-          IconlyLight.scan,
-          color: Colors.white,
-        ),
-        shape: RoundedRectangleBorder(
+        shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.all(Radius.circular(45.0)),
         ),
         backgroundColor: Colors.green,
         onPressed: () {
-          Navigator.push(context, MaterialPageRoute(builder: (context) => ScanPage()));
+          Navigator.push(
+              context, MaterialPageRoute(builder: (context) => ScanPage()));
         },
+        child: const Icon(
+          IconlyLight.scan,
+          color: Colors.white,
+        ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       body: PageStorage(
@@ -62,9 +66,9 @@ class _HomePageState extends State<HomePage> {
       ),
       bottomNavigationBar: BottomAppBar(
         color: Colors.green.withOpacity(0.1),
-        shape: CircularNotchedRectangle(),
-        child: Container(
-          height: 60,
+        shape: const CircularNotchedRectangle(),
+        child: SizedBox(
+          height: height * 0.06,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -81,7 +85,8 @@ class _HomePageState extends State<HomePage> {
                     Text(
                       "Home",
                       style: TextStyle(
-                        color: currentPageIndex == 0 ? Colors.green : Colors.grey,
+                        color:
+                            currentPageIndex == 0 ? Colors.green : Colors.grey,
                       ),
                     ),
                   ],
@@ -100,13 +105,14 @@ class _HomePageState extends State<HomePage> {
                     Text(
                       "Tracking",
                       style: TextStyle(
-                        color: currentPageIndex == 1 ? Colors.green : Colors.grey,
+                        color:
+                            currentPageIndex == 1 ? Colors.green : Colors.grey,
                       ),
                     ),
                   ],
                 ),
               ),
-              SizedBox(width: 40), // space for the floating action button
+              SizedBox(width: width * 0.06), // space for the floating action button
               MaterialButton(
                 minWidth: 40,
                 onPressed: () => onTabTapped(2),
@@ -120,7 +126,8 @@ class _HomePageState extends State<HomePage> {
                     Text(
                       "Cart",
                       style: TextStyle(
-                        color: currentPageIndex == 2 ? Colors.green : Colors.grey,
+                        color:
+                            currentPageIndex == 2 ? Colors.green : Colors.grey,
                       ),
                     ),
                   ],
@@ -139,7 +146,8 @@ class _HomePageState extends State<HomePage> {
                     Text(
                       "Profile",
                       style: TextStyle(
-                        color: currentPageIndex == 3 ? Colors.green : Colors.grey,
+                        color:
+                            currentPageIndex == 3 ? Colors.green : Colors.grey,
                       ),
                     ),
                   ],
@@ -152,59 +160,3 @@ class _HomePageState extends State<HomePage> {
     );
   }
 }
-
-
-        // items: const [
-        //   BottomNavigationBarItem(
-        //     icon: Icon(IconlyLight.home),
-        //     label: "Home",
-        //     activeIcon: Icon(IconlyBold.home),
-        //   ),
-        //   BottomNavigationBarItem(
-        //     icon: Icon(IconlyLight.document),
-        //     label: "Tracking",
-        //     activeIcon: Icon(IconlyBold.call),
-        //   ),
-        //   BottomNavigationBarItem(
-        //     icon: Icon(IconlyLight.buy),
-        //     label: "Cart",
-        //     activeIcon: Icon(IconlyBold.buy),
-        //   ),
-        //   BottomNavigationBarItem(
-        //     icon: Icon(IconlyLight.profile),
-        //     label: "Profile",
-        //     activeIcon: Icon(IconlyBold.profile),
-        //   ),
-        // ],
-
-//  bottomNavigationBar: BottomNavigationBar(
-//         type: BottomNavigationBarType.fixed,
-//         currentIndex: currentPageIndex,
-//         onTap: (index) {
-//           setState(() {
-//             currentPageIndex = index;
-//           });
-//         },
-//         items: const [
-//           BottomNavigationBarItem(
-//             icon: Icon(IconlyLight.home),
-//             label: "Home",
-//             activeIcon: Icon(IconlyBold.home),
-//           ),
-//           BottomNavigationBarItem(
-//             icon: Icon(IconlyLight.document),
-//             label: "Tracking",
-//             activeIcon: Icon(IconlyBold.call),
-//           ),
-//           BottomNavigationBarItem(
-//             icon: Icon(IconlyLight.buy),
-//             label: "Cart",
-//             activeIcon: Icon(IconlyBold.buy),
-//           ),
-//           BottomNavigationBarItem(
-//             icon: Icon(IconlyLight.profile),
-//             label: "Profile",
-//             activeIcon: Icon(IconlyBold.profile),
-//           ),
-//         ],
-//       ),

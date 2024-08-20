@@ -47,6 +47,8 @@ class _AddPlantState extends State<AddPlant> {
 
   @override
   Widget build(BuildContext context) {
+        final height =
+        MediaQuery.of(context).size.height - AppBar().preferredSize.height;
     Timestamp date = getCurrentTimestamp();
 
     return Scaffold(
@@ -101,7 +103,7 @@ class _AddPlantState extends State<AddPlant> {
                 ),
               ),
               SizedBox(
-                height: 20,
+                height: height * 0.02,
               ),
               Center(
                 child: Text(
@@ -113,11 +115,13 @@ class _AddPlantState extends State<AddPlant> {
                   ),
                 ),
               ),
-              const SizedBox(height: 16),
+               SizedBox(height: height * 0.017),
               TextField(
                 controller: _plantController,
                 decoration: InputDecoration(
-                  border: OutlineInputBorder(),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(30)
+                  ),
                   labelText: "Nama Tanaman",
                 ),
               ),
@@ -125,7 +129,9 @@ class _AddPlantState extends State<AddPlant> {
               DropdownButtonFormField<String>(
                 value: _selectedType,
                 decoration: InputDecoration(
-                  border: OutlineInputBorder(),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(30)
+                  ),
                   labelText: "Jenis Tanaman",
                 ),
                 items: _plantTypes.map((String type) {
@@ -140,11 +146,13 @@ class _AddPlantState extends State<AddPlant> {
                   });
                 },
               ),
-              const SizedBox(height: 16),
+               SizedBox(height: height * 0.017),
               TextField(
                 controller: _noteController,
                 decoration: InputDecoration(
-                  border: OutlineInputBorder(),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(30)
+                  ),
                   labelText: "Catatan",
                 ),
               ),
