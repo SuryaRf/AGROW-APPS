@@ -6,6 +6,8 @@ import 'package:agriplant/widgets/product_card.dart';
 import 'package:agriplant/pages/home_page.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import 'premium_page.dart';
+
 class ExplorePage extends StatefulWidget {
   const ExplorePage({super.key});
 
@@ -24,7 +26,7 @@ class _ExplorePageState extends State<ExplorePage> {
         automaticallyImplyLeading: false,
         centerTitle: false,
         title: Padding(
-          padding:  EdgeInsets.only(top: height * 0.015, left: width * 0.03),
+          padding: EdgeInsets.only(top: height * 0.015, left: width * 0.03),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -39,25 +41,40 @@ class _ExplorePageState extends State<ExplorePage> {
           ),
         ),
         actions: [
-          Padding(
-            padding:  EdgeInsets.only(right: width * 0.03, top: height * 0.015),
-            child: IconButton.filledTonal(
-              onPressed: () {},
-              icon: badges.Badge(
-                badgeContent: const Text(
-                  '3',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 12,
+          Row(
+            children: [
+              Padding(
+                padding:
+                    EdgeInsets.only(right: width * 0.03, top: height * 0.015),
+                child: IconButton.filledTonal(
+                  onPressed: () {},
+                  icon: badges.Badge(
+                    badgeContent: const Text(
+                      '3',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 12,
+                      ),
+                    ),
+                    position: badges.BadgePosition.topEnd(top: -15, end: -12),
+                    badgeStyle: const badges.BadgeStyle(
+                      badgeColor: Color(0xFF4CAF50),
+                    ),
+                    child: const Icon(IconlyBroken.notification),
                   ),
                 ),
-                position: badges.BadgePosition.topEnd(top: -15, end: -12),
-                badgeStyle: const badges.BadgeStyle(
-                  badgeColor: Colors.green,
-                ),
-                child: const Icon(IconlyBroken.notification),
               ),
-            ),
+              Padding(
+                padding:
+                    EdgeInsets.only(right: width * 0.03, top: height * 0.015),
+                child: IconButton.filledTonal(
+                  onPressed: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => const PremiumPage()));
+                  },
+                  icon: const Text("PRO +"),
+                ),
+              ),
+            ],
           ),
         ],
       ),
@@ -66,7 +83,8 @@ class _ExplorePageState extends State<ExplorePage> {
           padding: const EdgeInsets.all(16.0),
           children: [
             Padding(
-              padding:  EdgeInsets.only(bottom: height * 0.025, left: width * 0.005),
+              padding:
+                  EdgeInsets.only(bottom: height * 0.025, left: width * 0.005),
               child: SizedBox(
                 height: height * 0.23,
                 child: Card(
@@ -89,7 +107,7 @@ class _ExplorePageState extends State<ExplorePage> {
                                     .textTheme
                                     .titleLarge!
                                     .copyWith(
-                                      color: Colors.green.shade700,
+                                      color: Color(0xFF388E3C),
                                       fontSize: 22,
                                       fontWeight: FontWeight.bold,
                                     ),

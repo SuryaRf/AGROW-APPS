@@ -2,6 +2,7 @@ import 'package:agriplant/data/const.dart';
 import 'package:agriplant/firebase_options.dart';
 import 'package:agriplant/pages/activated_page.dart';
 import 'package:agriplant/pages/onboarding_page.dart';
+import 'package:agriplant/pages/splash_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gemini/flutter_gemini.dart';
@@ -26,7 +27,7 @@ class MainApp extends StatelessWidget {
         useMaterial3: true,
         textTheme: GoogleFonts.nunitoTextTheme(),
       ),
-      home: const ActivatedPage(),
+      home: const SplashScreen(),
     );
   }
 }

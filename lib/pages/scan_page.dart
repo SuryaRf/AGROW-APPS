@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
+import 'package:mobile_scanner/mobile_scanner.dart';
+import 'package:qr_scanner_overlay/qr_scanner_overlay.dart';
 
 class ScanPage extends StatefulWidget {
   const ScanPage({super.key});
@@ -9,117 +11,163 @@ class ScanPage extends StatefulWidget {
 }
 
 class _ScanPageState extends State<ScanPage> {
+   bool isScanCompleted = false;
+  bool isFlashOn = false;
+  bool isFrontCamera = false;
+  void closeScreen() {
+    isScanCompleted = false;
+  }
+  bool isGateOpen = false;
+
+  MobileScannerController controller = MobileScannerController();
   @override
   Widget build(BuildContext context) {
+     final height =
+        MediaQuery.of(context).size.height - AppBar().preferredSize.height;
+    final width = MediaQuery.of(context).size.width;
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
-        title: const Text('Scan Tanaman'),
-        centerTitle: true,
-        backgroundColor: Colors.green.shade50,
-        elevation: 0,
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back, color: Colors.green),
-          onPressed: () {
-            Navigator.of(context).pop();
-          },
+        leading: GestureDetector(
+            onTap: () => Navigator.pop(context),
+            child: const Icon(Icons.arrow_back)),
+        iconTheme: const IconThemeData(color: Colors.black),
+        title: Text(
+          "Scan Kesehatan Tanaman",
+          style: Theme.of(context).textTheme.titleLarge,
         ),
-        bottom: PreferredSize(
-          preferredSize: const Size.fromHeight(1.0),
-          child: Container(
-            color: Colors.green.shade300,
-            height: 1.0,
+        actions: [
+          GestureDetector(
+            onTap: () {
+              setState(() {
+                isFlashOn = !isFlashOn;
+              });
+              controller.toggleTorch();
+            },
+            child: Icon(
+              Icons.flash_on,
+              color: isFlashOn ? Colors.green : Colors.grey,
+            ),
           ),
-        ),
+          GestureDetector(
+            onTap: () {
+              setState(() {
+                isFrontCamera = !isFrontCamera;
+              });
+              controller.switchCamera();
+            },
+            child: Icon(
+              Icons.camera_front_outlined,
+              color: isFrontCamera ? Colors.green : Colors.grey,
+            ),
+          ),
+        ],
       ),
       body: SafeArea(
-        child: Column(
-          children: [
-            Expanded(
-              child: Stack(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 10.0, vertical: 10),
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(20),
-                      child: Image.asset(
-                        "assets/scantomat.jpg",
-                        fit: BoxFit.cover,
-                        width: double.infinity,
-                        height: double.infinity,
+        child: Container(
+          width: double.infinity,
+          padding: const EdgeInsets.all(20),
+          child: Column(
+            children: [
+              Expanded(
+                child: Container(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const Text(
+                        "Silahkan Arahkan Kamera\nAnda ke Tanaman",
+                        style:  TextStyle(
+                            color:  Color.fromRGBO(0, 0, 0, 1),
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold),
+                            textAlign: TextAlign.center,
                       ),
-                    ),
-                  ),
-                  Center(
-                    child: Image.asset(
-                      "assets/scan.png",
-                      color: Colors.green.shade200,
-                      height: 350,
-                      width: 350,
-                    ),
-                  ),
-                  Positioned(
-                    top: 372,
-                    left: 39,
-                    child: Center(
-                      child: Container(
-                        height: 175,
-                        width: 330,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          gradient: LinearGradient(
-                            colors: [
-                              Colors.green.withOpacity(0.4),
-                              Colors.white.withOpacity(0.1),
-                            ],
-                            begin: Alignment.topCenter,
-                            end: Alignment.bottomCenter,
-                          ),
+                      Padding(
+                        padding: EdgeInsets.only(top: height * 0.05),
+                        child: const Text(
+                          "Proses Scan Akan Dimulai Otomatis",
+                          style: TextStyle(
+                            color:  Color.fromRGBO(0, 0, 0, 1),
+                            fontSize: 12,
+                           ),
                         ),
                       ),
-                    ),
+                    ],
                   ),
-                ],
+                ),
               ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(left: 20, right: 20, bottom: 10),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  IconButton(
-                    icon: Icon(Icons.image_outlined, color: Colors.green),
-                    onPressed: () {
-                      // Aksi ketika tombol info ditekan
-                    },
-                  ),
-                  ElevatedButton(
-                    onPressed: () {
-                      // Aksi ketika tombol scan ditekan
-                    },
-                    child: Icon(
-                      IconlyLight.scan,
-                      color: Colors.white,
-                      size: 20,
+            Expanded(
+                child: Stack(
+                  children: [
+                    MobileScanner(
+                      controller: controller,
+                      onDetect: (capture) async {
+                        if (isScanCompleted) return;
+                        final List<Barcode> barcodes = capture.barcodes;
+                        if (barcodes.isNotEmpty) {
+                          final String? data = barcodes.first.rawValue;
+
+                          if (data != null) {
+                            isScanCompleted = true;
+                            
+                            // Kirim status True atau False berdasarkan apakah gate sudah terbuka atau belum
+                            // await sendDataToServer(
+                            //     data, isGateOpen ? "False" : "True");
+
+                            // Toggle status gate
+                            isGateOpen = !isGateOpen;
+
+                            // Reset scan completion status setelah beberapa detik
+                            Future.delayed(const Duration(seconds: 3), () {
+                              setState(() {
+                                isScanCompleted = false;
+                              });
+                            });
+                          }
+                        }
+                      },
                     ),
-                    style: ElevatedButton.styleFrom(
-                      shape: CircleBorder(side: BorderSide(color: Colors.grey)),
-                      padding: EdgeInsets.all(20),
-                      backgroundColor: Colors.green,
-                    ),
-                  ),
-                  IconButton(
-                    icon: Icon(Icons.help_outline, color: Colors.green),
-                    onPressed: () {
-                      // Aksi ketika tombol help ditekan
-                    },
-                  ),
-                ],
+                    QRScannerOverlay(overlayColor: Colors.black.withOpacity(0.5)),
+                  ],
+                ),
               ),
-            ),
-          ],
+              Expanded(
+                child: Container(
+                  alignment: Alignment.center,
+                  child: const Text(
+                    "Dikembangkan oleh AGROW",
+                    style: TextStyle(
+                            color:  Color.fromRGBO(0, 0, 0, 1),
+                            fontSize: 14,
+                            fontWeight: FontWeight.bold),
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
   }
+
+
+
+// Fungsi untuk mengirim data ke server
+  // Future<void> sendDataToServer(String url, String status) async {
+  //   try {
+  //     final response = await http.post(
+  //       Uri.parse(url),
+  //       headers: {"Content-Type": "application/json"},
+  //       body: jsonEncode({"data": status}),  // Mengirim status True atau False
+  //     );
+
+  //     if (response.statusCode == 200) {
+  //       print("Gate ${status == 'True' ? 'opened' : 'closed'} successfully");
+  //     } else {
+  //       print("Failed to update gate: ${response.body}");
+  //     }
+  //   } catch (e) {
+  //     print("Error: $e");
+  //   }
+  // }
 }
