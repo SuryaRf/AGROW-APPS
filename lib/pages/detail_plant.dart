@@ -1,3 +1,4 @@
+import 'package:agriplant/pages/modal_hasil_panen.dart';
 import 'package:agriplant/pages/plant_monitoring.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -176,7 +177,7 @@ class _DetailPlantState extends State<DetailPlant> {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => const AiGrow()));
+                              builder: (context) => const ModalDanHasilPanenPage()));
                     },
                     child: Container(
                       margin: const EdgeInsets.only(left: 10, right: 10),
@@ -208,7 +209,7 @@ class _DetailPlantState extends State<DetailPlant> {
                           Padding(
                             padding: const EdgeInsets.all(8.0),
                             child: Text(
-                              "Chat \nDengan AI Grow",
+                              "Hitung Modal\n& Hasil",
                               textAlign: TextAlign.center,
                               style: GoogleFonts.poppins().copyWith(
                                 fontSize: 14,

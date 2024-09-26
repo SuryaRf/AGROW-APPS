@@ -27,7 +27,8 @@ class _AiGrowState extends State<AiGrow> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("AI Grow"),
+        title: const Text("Ai Grow"),
+        shape: const Border(bottom: BorderSide(color: Colors.green)),
         centerTitle: true,
       ),
       body: _buildUI(),
@@ -104,7 +105,5 @@ class _AiGrowState extends State<AiGrow> {
       _sendMessage(chatMessage);
     }
   }
-
-//   
 
 }

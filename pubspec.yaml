@@ -9,6 +9,7 @@ environment:
 dependencies:
   badges: ^3.1.2
   camera: ^0.11.0+1
+  chat_message_timestamp: ^0.0.1
   cloud_firestore: ^5.2.0
   dash_chat_2: ^0.0.21
   easy_stepper: ^0.8.5+1
@@ -17,6 +18,7 @@ dependencies:
   fl_chart: ^0.68.0
   flutter:
     sdk: flutter
+  flutter_chat_bubble: ^2.0.2
   flutter_gemini: ^2.0.4
   flutter_iconly: ^1.0.2
   flutter_launcher_icons: ^0.13.1

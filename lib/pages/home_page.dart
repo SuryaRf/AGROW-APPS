@@ -1,3 +1,4 @@
+import 'package:agriplant/pages/ai_grow.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:agriplant/pages/explore_page.dart';
@@ -19,7 +20,7 @@ class _HomePageState extends State<HomePage> {
   final List<Widget> pages = [
     const ExplorePage(),
     const ServicesPage(),
-    const CartPage(),
+    const AiGrow(),
     const ProfilePage()
   ];
   late int currentPageIndex;
@@ -120,11 +121,11 @@ class _HomePageState extends State<HomePage> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Icon(
-                      IconlyLight.buy,
+                      Icons.mark_unread_chat_alt_sharp,
                       color: currentPageIndex == 2 ? Colors.green : Colors.grey,
                     ),
                     Text(
-                      "Cart",
+                      "AiGrow",
                       style: TextStyle(
                         color:
                             currentPageIndex == 2 ? Colors.green : Colors.grey,

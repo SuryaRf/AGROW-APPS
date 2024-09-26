@@ -1,3 +1,4 @@
+import 'package:agriplant/pages/user_list_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:badges/badges.dart' as badges;
@@ -47,7 +48,9 @@ class _ExplorePageState extends State<ExplorePage> {
                 padding:
                     EdgeInsets.only(right: width * 0.03, top: height * 0.015),
                 child: IconButton.filledTonal(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (context) =>  UserListPage()));
+                  },
                   icon: badges.Badge(
                     badgeContent: const Text(
                       '3',
@@ -60,7 +63,7 @@ class _ExplorePageState extends State<ExplorePage> {
                     badgeStyle: const badges.BadgeStyle(
                       badgeColor: Color(0xFF4CAF50),
                     ),
-                    child: const Icon(IconlyBroken.notification),
+                    child: const Icon(IconlyBroken.chat),
                   ),
                 ),
               ),
