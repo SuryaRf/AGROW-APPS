@@ -65,6 +65,25 @@ class _PremiumPageState extends State<PremiumPage> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
+                  Text("Akses Artikel\nAgrow", style: GoogleFonts.poppins(fontSize: 14, )),
+                  Padding(
+                    padding:  EdgeInsets.only(left: width * 0.05),
+                    child: const Icon(Icons.done),
+                  ),
+                  Padding(
+                    padding:  EdgeInsets.only(right: width * 0.08),
+                    child: const Icon(Icons.done),
+                  )
+                ],
+              ),
+            ),
+                        Divider(height: height * 0.05, color: Colors.grey,endIndent: width * 0.07, indent: width * 0.06,),
+
+            Padding(
+              padding:  EdgeInsets.only(left: width * 0.06, right: width * 0.06),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
                   Text("Akses Tracking\nPerkembangan\nTanaman", style: GoogleFonts.poppins(fontSize: 14, )),
                   Padding(
                     padding:  EdgeInsets.only(left: width * 0.05),
@@ -116,17 +135,17 @@ class _PremiumPageState extends State<PremiumPage> {
             ),
              Divider(height: height * 0.05, color: Colors.grey,endIndent: width * 0.07, indent: width * 0.06,),
             Padding(
-              padding:  EdgeInsets.only(left: width * 0.06, right: width * 0.06),
+              padding:  EdgeInsets.only(left: width * 0.06, right: width * 0.09),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text("Kupon Diskon\nProduk", style: GoogleFonts.poppins(fontSize: 14, )),
+                  Text("Fitur Pendeteksi\nPenyakit\nTanaman", style: GoogleFonts.poppins(fontSize: 14, )),
                   Padding(
                     padding:  EdgeInsets.only(left: width * 0.07),
                     child: const Icon(Icons.minimize_outlined),
                   ),
                   Padding(
-                    padding:  EdgeInsets.only(right: width * 0.08, top: height * 0.01),
+                    padding:  EdgeInsets.only(right: width * 0.05, top: height * 0.01, left: width * 0.05),
                     child: const Icon(Icons.done),
                   ),
                   
@@ -135,7 +154,7 @@ class _PremiumPageState extends State<PremiumPage> {
             ),
 
             Padding(
-              padding:  EdgeInsets.only(top: height * 0.2),
+              padding:  EdgeInsets.only(top: height * 0.07),
               child: InkWell(
                 onTap: (){
                   Navigator.push(context, MaterialPageRoute(builder: (context) => const PremiumPage2()));

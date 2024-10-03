@@ -12,7 +12,7 @@ class UserListPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Daftar Pesan')),
+      appBar: AppBar(title: const  Text('Daftar Pesan')),
       body: ListView.builder(
         itemCount: users.length,
         itemBuilder: (context, index) {
@@ -27,7 +27,7 @@ class UserListPage extends StatelessWidget {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => ChatPage(user: users[index]), // Fixed here
+                  builder: (context) => ChatPage(user: users[index]), 
                 ),
               );
             },

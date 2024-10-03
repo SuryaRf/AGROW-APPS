@@ -1,4 +1,5 @@
 import 'package:agriplant/data/products.dart';
+import 'package:agriplant/models/article.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
@@ -6,9 +7,9 @@ import 'package:flutter_iconly/flutter_iconly.dart';
 import '../models/product.dart';
 
 class ProductDetailsPage extends StatefulWidget {
-  const ProductDetailsPage({super.key, required this.product});
+  const ProductDetailsPage({super.key, required this.articles});
 
-  final Product product;
+  final Article articles;
 
   @override
   State<ProductDetailsPage> createState() => _ProductDetailsPageState();
@@ -56,14 +57,14 @@ Widget build(BuildContext context) {
                 margin: const EdgeInsets.only(bottom: 16),
                 decoration: BoxDecoration(
                   image: DecorationImage(
-                    image: AssetImage(widget.product.image),
+                    image: AssetImage(widget.articles.image),
                     fit: BoxFit.cover,
                   ),
                   borderRadius: BorderRadius.circular(10),
                 ),
               ),
               Text(
-                widget.product.name,
+                widget.articles.title,
                 style: Theme.of(context).textTheme.titleLarge,
               ),
               const SizedBox(height: 5),
@@ -80,10 +81,10 @@ Widget build(BuildContext context) {
                     text: TextSpan(
                       children: [
                         TextSpan(
-                            text: "Rp${widget.product.price.toStringAsFixed(3)}",
+                            text: "Rp${widget.articles.date}",
                             style: Theme.of(context).textTheme.titleMedium),
                         TextSpan(
-                            text: "/${widget.product.unit}",
+                            text: "/${widget.articles.date}",
                             style: Theme.of(context).textTheme.bodySmall),
                       ],
                     ),
@@ -99,7 +100,7 @@ Widget build(BuildContext context) {
                     color: Colors.yellow.shade800,
                   ),
                   Text(
-                    "${widget.product.rating} (192)",
+                    widget.articles.date,
                   ),
                   const Spacer(),
                   SizedBox(
@@ -115,7 +116,7 @@ Widget build(BuildContext context) {
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 12),
                     child: Text(
-                      widget.product.unit,
+                      widget.articles.author,
                       style: Theme.of(context).textTheme.titleMedium!.copyWith(
                             fontWeight: FontWeight.bold,
                           ),
@@ -146,8 +147,8 @@ Widget build(BuildContext context) {
                   children: [
                     TextSpan(
                       text: showMore
-                          ? widget.product.description
-                          : '${widget.product.description.substring(0, widget.product.description.length - 100)}...',
+                          ? widget.articles.content
+                          : '${widget.articles.content.substring(0, widget.articles.content.length - 100)}...',
                     ),
                     TextSpan(
                       recognizer: readMoreGestureRecognizer,

@@ -50,4 +50,5 @@ flutter:
     - assets/
     - assets/services/
     - assets/products/
+    - assets/articles/
     - shorebird.yaml

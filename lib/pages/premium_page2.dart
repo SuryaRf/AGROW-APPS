@@ -43,7 +43,7 @@ class _PremiumPage2State extends State<PremiumPage2> {
             ),
             Padding(
               padding: EdgeInsets.only(
-                  top: height * 0.1, left: width * 0.06, right: width * 0.06),
+                  top: height * 0.02, left: width * 0.06, right: width * 0.06),
               child: Text(
                 "Pilih Paket untuk\nLangganan PRO+ Kalian",
                 style: GoogleFonts.poppins(
@@ -88,7 +88,7 @@ class _PremiumPage2State extends State<PremiumPage2> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text("Paket\nSimpel",
+                        Text("Paket\nBasic",
                             style: GoogleFonts.poppins(
                                 fontSize: 16, fontWeight: FontWeight.bold)),
                         Padding(
@@ -113,7 +113,7 @@ class _PremiumPage2State extends State<PremiumPage2> {
                   });
                 },
                 child: Container(
-                  height: height * 0.13,
+                  height: height * 0.1,
                   width: width * 0.9,
                   decoration: BoxDecoration(
                     color: _selectedPackage == 2
@@ -140,7 +140,7 @@ class _PremiumPage2State extends State<PremiumPage2> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text("Paket\nHemat",
+                        Text("Paket\nPlus",
                             style: GoogleFonts.poppins(
                                 fontSize: 16, fontWeight: FontWeight.bold)),
                         Padding(
@@ -156,7 +156,59 @@ class _PremiumPage2State extends State<PremiumPage2> {
               ),
             ),
             Padding(
-              padding: EdgeInsets.only(top: height * 0.15),
+              padding: EdgeInsets.only(
+                  left: width * 0.06, top: height * 0.03, right: width * 0.06),
+              child: InkWell(
+                onTap: () {
+                  setState(() {
+                    _selectedPackage = 3;
+                  });
+                },
+                child: Container(
+                  height: height * 0.1,
+                  width: width * 0.9,
+                  decoration: BoxDecoration(
+                    color: _selectedPackage == 3
+                        ? const Color(0xFF66BB6A) // Highlight color for selected package
+                        : const Color(0xFFA8FAAB),
+                    borderRadius: BorderRadius.circular(10),
+                    border: Border.all(
+                      color: _selectedPackage == 3
+                          ? Colors.green.withOpacity(0.8)
+                          : Colors.green.withOpacity(0.5),
+                      width: 2,
+                    ),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black.withOpacity(.2),
+                        spreadRadius: 1,
+                        blurRadius: 7,
+                        offset: const Offset(0, 3),
+                      ),
+                    ],
+                  ),
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(horizontal: width * 0.07),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text("Paket\nSuper",
+                            style: GoogleFonts.poppins(
+                                fontSize: 16, fontWeight: FontWeight.bold)),
+                        Padding(
+                          padding: EdgeInsets.only(left: width * 0.05),
+                          child: Text("Rp 80.000 / 3 Bulan",
+                              style: GoogleFonts.poppins(
+                                  fontSize: 14, fontWeight: FontWeight.bold)),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.only(top: height * 0.13),
               child: InkWell(
                 onTap: () {
                   _showPaymentSuccessDialog(context);

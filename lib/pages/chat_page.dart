@@ -4,7 +4,6 @@ import 'package:flutter_chat_bubble/chat_bubble.dart';
 import 'package:flutter_chat_bubble/clippers/chat_bubble_clipper_1.dart';
 
 
-// Define the Message class
 class Message {
   final String senderId;
   final String content;
@@ -53,7 +52,7 @@ class _ChatPageState extends State<ChatPage> {
                 return ChatBubble(
                   clipper: ChatBubbleClipper1(type: BubbleType.sendBubble),
                   alignment: Alignment.topRight,
-                  margin: EdgeInsets.only(top: 20),
+                  margin: const EdgeInsets.only(top: 20),
                   backGroundColor: Colors.green.withOpacity(0.9),
                   child: Container(
                     constraints: BoxConstraints(
@@ -64,21 +63,21 @@ class _ChatPageState extends State<ChatPage> {
                       children: [
                         Text(
                           messages[index].content,
-                          style: TextStyle(color: Colors.white),
+                          style: const TextStyle(color: Colors.white),
                         ),
-                        SizedBox(height: 5),
+                        const SizedBox(height: 5),
                         Row(
                           mainAxisSize: MainAxisSize.min,
                           children: [
                             Text(
                               // Format the time to show only hours and minutes
                               "${messages[index].timestamp.hour}:${messages[index].timestamp.minute.toString().padLeft(2, '0')}",
-                              style: TextStyle(color: Colors.white, fontSize: 12),
+                              style: const TextStyle(color: Colors.white, fontSize: 12),
                             ),
-                            SizedBox(width: 5),
-                            Icon(
+                            const SizedBox(width: 5),
+                            const Icon(
                               Icons.check,
-                              color: const Color.fromARGB(255, 13, 178, 255),
+                              color:  Color.fromARGB(255, 13, 178, 255),
                               size: 20,
                             ),
                           ],
@@ -107,7 +106,7 @@ class _ChatPageState extends State<ChatPage> {
                   ),
                 ),
                 IconButton(
-                  icon: Icon(Icons.send),
+                  icon: const Icon(Icons.send),
                   onPressed: _sendMessage,
                 ),
               ],

@@ -1,8 +1,9 @@
+import 'package:agriplant/data/articles.dart';
+import 'package:agriplant/models/article.dart';
 import 'package:agriplant/pages/user_list_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:badges/badges.dart' as badges;
-import 'package:agriplant/data/products.dart';
 import 'package:agriplant/widgets/product_card.dart';
 import 'package:agriplant/pages/home_page.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -110,7 +111,7 @@ class _ExplorePageState extends State<ExplorePage> {
                                     .textTheme
                                     .titleLarge!
                                     .copyWith(
-                                      color: Color(0xFF388E3C),
+                                      color: const Color(0xFF388E3C),
                                       fontSize: 22,
                                       fontWeight: FontWeight.bold,
                                     ),
@@ -153,7 +154,7 @@ class _ExplorePageState extends State<ExplorePage> {
                 Padding(
                   padding: const EdgeInsets.only(left: 10),
                   child: Text(
-                    "Produk Kami",
+                    "Artikel Kami",
                     style: GoogleFonts.poppins().copyWith(
                       fontSize: 16,
                       fontWeight: FontWeight.w600,
@@ -167,19 +168,19 @@ class _ExplorePageState extends State<ExplorePage> {
               ],
             ),
             GridView.builder(
-              itemCount: products.length,
+              itemCount: articles.length,
               shrinkWrap: true,
               physics: const NeverScrollableScrollPhysics(),
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2,
-                childAspectRatio: 0.9,
+                crossAxisCount: 1,
+                childAspectRatio: 1,
                 crossAxisSpacing: 16,
                 mainAxisSpacing: 16,
               ),
               itemBuilder: (context, index) {
                 return Padding(
-                  padding: const EdgeInsets.only(left: 10),
-                  child: ProductCard(product: products[index]),
+                  padding: const EdgeInsets.only(left: 5),
+                  child: ProductCard(articles: articles[index]),
                 );
               },
             )
